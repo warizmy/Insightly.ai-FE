@@ -2,12 +2,12 @@ class Navbar {
   render() {
     const header = document.createElement('header');
     header.innerHTML = `
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
       <div class="container-fluid">
         <a href="#/" class="d-flex align-items-center justify-content-center gap-3" style="text-decoration: none;">
           <div class="navbar-txt-header">
-              <div id="navbarBrand" class="navbar-brand d-flex flex-row fs-5 fw-semibold">
-                IndoFood.<span class="text-warning">ai</span>
+              <div id="navbarBrand" class="navbar-brand d-flex flex-row fs-4 fw-semibold main-gradient-text">
+                <i class="bi bi-cpu-fill me-2"></i>Insightly.ai
               </div>
           </div>
         </a>
@@ -17,19 +17,16 @@ class Navbar {
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#/">Beranda</a>
+              <a class="nav-link" href="#/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/cekmakanan">Cek Makanan</a>
+              <a class="nav-link" href="#/cekmakanan">How it Works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/daftarmenu">Daftar Menu</a>
+              <a class="nav-link" href="#/daftarmenu">API Docs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/riwayat">Riwayat</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/tentang">Tentang</a>
+              <a class="nav-link" href="#/riwayat">About</a>
             </li>
           </ul>
         </div>

@@ -67,13 +67,13 @@ module.exports = {
     }),
     new WebpackPwaManifest({
       filename: 'manifest.json',
-      name: 'IndoFood AI',
-      short_name: 'IndoFood.ai',
-      description: 'AI-based Indonesian Food Classification',
+      name: 'Insightly.ai',
+      short_name: 'Insightly.ai',
+      description: 'AI-based Strategic Sentiment Analysis',
       start_url: '/#/',
       display: 'standalone',
       background_color: '#ffffff',
-      theme_color: '#f4b400',
+      theme_color: '#3b82f6',
       publicPath: '/',
       icons: [
         {

@@ -3,8 +3,8 @@ import 'lazysizes';
 import 'quill/dist/quill.snow.css';
 import '../styles/main.css';
 import Main from './app';
-import LoadingCircle from './utils/loading';
 import setActiveNavbar from './utils/navbarActive';
+import ProgressBar from './utils/progressBar';
 
 const app = new Main({
   content: document.querySelector('#mainContent'),
@@ -12,31 +12,35 @@ const app = new Main({
   mainContentWrapper: document.querySelector('.main-content-wrapper'),
 });
 
-const loadingBar = new LoadingCircle();
+const progressBar = new ProgressBar();
 
 window.addEventListener('load', async () => {
   if (!window.location.hash) {
     window.location.hash = '#/';
   }
-
-  loadingBar.show();
+  progressBar.start();
 
   await app.renderPage();
   setActiveNavbar();
-  loadingBar.hide();
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/sw.js');
-  }
+  progressBar.finish();
+
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker
+  //     .register('/sw.js');
+  // }
 });
 
 window.addEventListener('hashchange', async () => {
-  loadingBar.show();
+  progressBar.start();
 
   await app.renderPage();
   setActiveNavbar();
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant',
+  });
 
-  loadingBar.hide();
+  progressBar.finish();
 });

@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ayamGoreng",
+    "name": "Ayam Goreng",
+    "category": "Daging",
+    "imageKey": "ayamGoreng"
+  },
+  {
+    "id": "burger",
+    "name": "Burger",
+    "category": "Fast-food",
+    "imageKey": "burger"
+  },
+  {
+    "id": "gadoGado",
+    "name": "Gado-Gado",
+    "category": "Sayur-sayuran",
+    "imageKey": "gadoGado"
+  },
+  {
+    "id": "ikanGoreng",
+    "name": "Ikan Goreng",
+    "category": "Daging",
+    "imageKey": "ikanGoreng"
+  },
+  {
+    "id": "kentangGoreng",
+    "name": "Kentang Goreng",
+    "category": "Fast-Food",
+    "imageKey": "kentangGoreng"
+  },
+  {
+    "id": "miGoreng",
+    "name": "Mi Goreng",
+    "category": "Fast-Food",
+    "imageKey": "miGoreng"
+  },
+  {
+    "id": "nasiGoreng",
+    "name": "Nasi Goreng",
+    "category": "Fast-Food",
+    "imageKey": "nasiGoreng"
+  },
+  {
+    "id": "nasiPadang",
+    "name": "Nasi Padang",
+    "category": "Fast-Food",
+    "imageKey": "nasiPadang"
+  },
+  {
+    "id": "pizza",
+    "name": "Pizza",
+    "category": "Fast-Food",
+    "imageKey": "pizza"
+  },
+  {
+    "id": "rawon",
+    "name": "Rawon",
+    "category": "Daging",
+    "imageKey": "rawon"
+  },
+  {
+    "id": "rendang",
+    "name": "Rendang",
+    "category": "Daging",
+    "imageKey": "rendang"
+  },
+  {
+    "id": "sate",
+    "name": "Sate",
+    "category": "Daging",
+    "imageKey": "sate"
+  },
+  {
+    "id": "sotoAyam",
+    "name": "Soto Ayam",
+    "category": "Fast-food",
+    "imageKey": "sotoAyam"
+  }
+]

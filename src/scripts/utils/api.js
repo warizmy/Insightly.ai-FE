@@ -1,13 +1,14 @@
 const BASE_URL = process.env.API_BASE_URL;
 
 const Api = {
-  async predictFood(imageFile) {
+  async predictFood(imageFile, options = {}) {
     const formData = new FormData();
     formData.append('file', imageFile);
 
     const response = await fetch(`${BASE_URL}/predict`, {
       method: 'POST',
       body: formData,
+      signal: options.signal,
     });
 
     if (!response.ok) {
