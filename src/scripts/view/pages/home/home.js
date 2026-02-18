@@ -1,6 +1,4 @@
-import FaqSection from './sections/faq';
 import HeroSection from './sections/hero';
-import HowItWorksSection from './sections/howItWorks';
 
 class Home {
   async _render() {
@@ -8,8 +6,6 @@ class Home {
 
     container.append(
       new HeroSection().render(),
-      new HowItWorksSection().render(),
-      new FaqSection().render(),
     );
 
     return container;

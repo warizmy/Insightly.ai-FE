@@ -3,9 +3,6 @@
 @import "home.css";
 @import "footer.css";
 @import "about.css";
-@import "menu.css";
-@import "historyMenus.css";
-@import "classification.css";
 
 :root {
   --primary-blue: #3b82f6;

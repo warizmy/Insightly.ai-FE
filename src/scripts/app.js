@@ -56,7 +56,7 @@ class Main {
         this._activePage._initializeEvent();
       }
     } else {
-      this._content.innerHTML = '<h1 class="text-center mt-5">404</h1>';
+      this._content.innerHTML = '<h1 class="text-center mt-5 pt-5">404 Not Found</h1>';
     }
   }
 }

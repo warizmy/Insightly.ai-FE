@@ -20,13 +20,13 @@ class Navbar {
               <a class="nav-link" href="#/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/cekmakanan">How it Works</a>
+              <a class="nav-link" href="#/howitworks">How it Works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/daftarmenu">API Docs</a>
+              <a class="nav-link" href="#/apidocs">API Docs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/riwayat">About</a>
+              <a class="nav-link" href="#/about">About</a>
             </li>
           </ul>
         </div>

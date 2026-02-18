@@ -1,4 +1,4 @@
-class About {
+class HowItWorks {
   _render() {
     const section = document.createElement('section');
     section.innerHTML = `
@@ -7,4 +7,4 @@ class About {
   }
 }
 
-export default About;
+export default HowItWorks;
