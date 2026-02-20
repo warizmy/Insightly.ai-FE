@@ -16,13 +16,12 @@ class HeroSection {
                intelligence.
           </p>
           <div class="sandbox-container mx-auto mt-4 shadow p-4 rounded-4 bg-white border" style="max-width: 40em; width: 100%;">
-               <h6 class="text-start mb-3 text-muted small fw-bold">LIVE SANDBOX</h6>
                <div class="input-group mb-3">
                          <input
                               type="text"
                               id="sandbox-input"
                               class="form-control border-0 bg-body-secondary"
-                              placeholder="Ketik feedback di sini"
+                              placeholder="Type your customer feedback here..."
                               style="box-shadow: none !important;"
                          />
                     <button class="btn btn-primary px-4" id="btn-analyze">
