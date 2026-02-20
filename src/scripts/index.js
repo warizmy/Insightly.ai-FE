@@ -1,6 +1,4 @@
-import 'aos/dist/aos.css';
 import 'lazysizes';
-import 'quill/dist/quill.snow.css';
 import '../styles/main.css';
 import Main from './app';
 import setActiveNavbar from './utils/navbarActive';
