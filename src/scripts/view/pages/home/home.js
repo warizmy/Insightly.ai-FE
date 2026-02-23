@@ -2,18 +2,24 @@ import HeroSection from './sections/hero';
 import UploadsSection from './sections/uploads';
 
 class Home {
+  constructor() {
+    this.heroSection = new HeroSection();
+    this.uploadsSection = new UploadsSection();
+  }
+
   async _render() {
     const container = document.createElement('div');
 
     container.append(
-      new HeroSection().render(),
-      new UploadsSection().render(),
+      this.heroSection.render(),
+      this.uploadsSection.render(),
     );
 
     return container;
   }
 
   _initializeEvent() {
+    this.heroSection._initializeEvent();
   }
 }
 

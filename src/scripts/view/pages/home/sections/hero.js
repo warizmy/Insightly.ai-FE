@@ -4,6 +4,15 @@ class HeroSection {
     section.className = 'hero my-3';
     section.innerHTML = `
      <div class="container text-center d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex align-items-center justify-content-center">
+               <button class="d-flex text-decoration-none flex-row py-2 px-3 bg-primary-subtle rounded-4 hero-btn" id="heroCta">
+                    <p class="d-flex flex-row gap-2 text-primary small m-0">Coba Sekarang
+                         <span>
+                              <i class="bi bi-rocket-takeoff-fill"></i>
+                         </span>
+                    </p>
+               </button>
+          </div>
           <h1 class="display-4 fw-bold">
                Turn Customer Noise into 
                <br>
@@ -39,6 +48,22 @@ class HeroSection {
           </div>
      </div>`;
     return section;
+  }
+
+  _initializeEvent() {
+    const buttonCta = document.getElementById('heroCta');
+
+    this._heroCta(buttonCta);
+  }
+
+  _heroCta(button){
+     button.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({
+               top: document.querySelector('.upload-section').offsetTop,
+               behavior: 'smooth',
+          });
+     });
   }
 }
 

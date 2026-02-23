@@ -12,6 +12,15 @@
   border: none;
 }
 
+.hero-btn{
+  border:none;
+}
+
+.hero-btn:hover{
+  filter: brightness(0.95);
+  transition: all 0.2s ease;
+}
+
 .border-dashed {
   border: 2px dashed #cbd5e1;
   transition: all 0.3s ease;
