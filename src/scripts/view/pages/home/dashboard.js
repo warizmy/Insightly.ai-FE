@@ -1,10 +1,12 @@
 import HeroSection from './sections/hero';
 import UploadsSection from './sections/uploads';
+import ResultsSection from './sections/results';
 
 class Dashboard {
   constructor() {
     this.heroSection = new HeroSection();
     this.uploadsSection = new UploadsSection();
+    this.resultsSection = new ResultsSection();
   }
 
   async _render() {
@@ -13,6 +15,7 @@ class Dashboard {
     container.append(
       this.heroSection.render(),
       this.uploadsSection.render(),
+      this.resultsSection._render(),
     );
 
     return container;

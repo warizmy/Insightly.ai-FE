@@ -12,11 +12,11 @@
   border: none;
 }
 
-.hero-btn{
-  border:none;
+.hero-btn {
+  border: none;
 }
 
-.hero-btn:hover{
+.hero-btn:hover {
   filter: brightness(0.95);
   transition: all 0.2s ease;
 }
@@ -46,45 +46,38 @@
   margin-bottom: 20px;
 }
 
-.section-1 {
-  width: 70%;
+accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
 }
 
-.card {
-  background-color: #fff;
-  border-bottom: 3px solid #ffa559;
-  padding: 1rem 1rem 0.1rem 1rem;
-  margin: 0;
-  width: 100%;
+.accordion-button:not(.collapsed) {
+  background-color: #f8fafc;
+  color: inherit;
+  box-shadow: none;
 }
 
-.card p {
-  font-size: 14px;
+.accordion-item {
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease;
 }
 
-.section-1 img {
-  width: 46px;
-  padding-bottom: 1rem;
-  height: 100%;
+/* Indikator warna di pinggir sesuai urgency */
+.accordion-item:has(.bg-danger) {
+  border-left-color: #dc3545;
+}
+.accordion-item:has(.bg-warning) {
+  border-left-color: #ffc107;
 }
 
-.section-2 {
-  width: 70%;
+.stat-item {
+  flex: 1;
+  min-width: 120px;
 }
 
-.section-2 button {
-  color: #000;
-  text-decoration: none;
-  font-size: 16px;
-  border: none;
-  outline: none;
+.bg-light-subtle {
+  background-color: #fcfdfe;
 }
-
-.section-2 button:hover {
-  text-decoration: underline;
-}
-
-
 
 @media (max-width: 890px) {
   .hero .inner-hero {
@@ -126,7 +119,7 @@
   }
 
   @media (max-width: 320px) {
-    html{
+    html {
       font-size: 78%;
     }
   }

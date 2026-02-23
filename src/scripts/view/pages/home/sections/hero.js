@@ -60,7 +60,7 @@ class HeroSection {
      button.addEventListener('click', (e) => {
           e.preventDefault();
           window.scrollTo({
-               top: document.querySelector('.upload-section').offsetTop,
+               top: document.querySelector('.upload-section').offsetTop - 20,
                behavior: 'smooth',
           });
      });
