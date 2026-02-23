@@ -1,4 +1,5 @@
 import HeroSection from './sections/hero';
+import UploadsSection from './sections/uploads';
 
 class Home {
   async _render() {
@@ -6,6 +7,7 @@ class Home {
 
     container.append(
       new HeroSection().render(),
+      new UploadsSection().render(),
     );
 
     return container;

@@ -75,6 +75,8 @@
   text-decoration: underline;
 }
 
+
+
 @media (max-width: 890px) {
   .hero .inner-hero {
     padding: 0 2.5em;
