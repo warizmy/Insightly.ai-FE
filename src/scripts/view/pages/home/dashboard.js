@@ -1,7 +1,7 @@
 import HeroSection from './sections/hero';
 import UploadsSection from './sections/uploads';
 
-class Home {
+class Dashboard {
   constructor() {
     this.heroSection = new HeroSection();
     this.uploadsSection = new UploadsSection();
@@ -23,4 +23,4 @@ class Home {
   }
 }
 
-export default Home;
+export default Dashboard;

@@ -17,7 +17,7 @@ class Navbar {
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#/">Home</a>
+              <a class="nav-link" href="#/">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#/howitworks">How it Works</a>

@@ -1,9 +1,9 @@
 import About from '../view/pages/about';
-import Home from '../view/pages/home/home';
+import Dashboard from '../view/pages/home/dashboard';
 import HowItWorks from '../view/pages/howItWorks';
 
 const routes = {
-  '/': Home,
+  '/': Dashboard,
   '/about': About,
   '/howitworks': HowItWorks,
 };
