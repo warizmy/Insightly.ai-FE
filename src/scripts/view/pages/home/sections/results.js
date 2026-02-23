@@ -4,9 +4,9 @@ class ResultsSection {
     section.className = 'results-section py-5 mb-5';
     section.innerHTML = `
         <div class="container">
-        <div class="row g-3 mb-5">
-          <div class="col-md-12">
-            <div
+            <div class="row g-3 mb-5">
+                <div class="col-md-12">
+                    <div
               class="bg-white p-4 rounded-4 shadow-sm border-0 d-flex align-items-center justify-content-between flex-wrap"
             >
               <div class="stat-item text-center px-4 border-end">
