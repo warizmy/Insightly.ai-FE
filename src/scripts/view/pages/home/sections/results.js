@@ -80,7 +80,7 @@ class ResultsSection {
 
     return `
     <div class="priority-row">
-      <div class="p-4 d-flex align-items-center cursor-pointer collapsed" 
+      <div role="button" class="p-4 d-flex align-items-center cursor-pointer collapsed" 
            data-bs-toggle="collapse" 
            data-bs-target="#insight-${index}">
         
