@@ -1,5 +1,18 @@
 .hero .container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-btn {
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.hero-btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -12,18 +25,10 @@
   border: none;
 }
 
-.hero-btn {
-  border: none;
-}
-
-.hero-btn:hover {
-  filter: brightness(0.95);
-  transition: all 0.2s ease;
-}
-
 .border-dashed {
   border: 2px dashed #cbd5e1;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .border-dashed:hover {
@@ -39,90 +44,189 @@
   transform: translateY(-5px);
 }
 
-.italic-quote {
-  font-style: italic;
-  border-left: 3px solid #e2e8f0;
-  padding-left: 15px;
-  margin-bottom: 20px;
-}
-
-/* Bento Card Style */
+/* --- BENTO GRID SYSTEM --- */
 .bento-card {
-    background: white;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
+  background: white;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .shadow-soft {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 .bg-gradient-purple {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
 }
 
-/* Borders for cards */
-.border-start-positive { 
-  border-left: 6px solid #10b981; }
-.border-start-negative { 
-  border-left: 6px solid #ef4444; }
-
-/* Modern Accordion Customization */
-.insight-item {
-    background: white;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.border-start-positive {
+  border-left: 6px solid #10b981;
+}
+.border-start-negative {
+  border-left: 6px solid #ef4444;
 }
 
-.insight-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+.modern-accordion {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
 }
 
-.urgency-pill {
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
+.priority-row {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
 }
 
-.critical { background: #fee2e2; color: #ef4444; }
-.high { background: #fee2e2; color: #ef4444; }
-.medium { background: #fee2e2; color: #ef4444; }
+.priority-row:hover {
+  background-color: #f8fafc;
+}
+
+.priority-row:last-child {
+  border-bottom: none;
+}
+
+.priority-row .flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.priority-header {
+  background-color: #f5f3ff;
+  border-bottom: 1px solid #e2e8f0;
+  border-top-left-radius: 24px; /* Biar sinkron ama lengkungan container utama */
+  border-top-right-radius: 24px;
+}
+
+.priority-header .label-caps {
+  margin-bottom: 0;
+  /* Pake warna indigo/blue biar nggak mati (bukan sekadar abu-abu) */
+  color: var(--primary-purple);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.urgency-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.urgency-tag.danger {
+  background: #fee2e2;
+  color: #ef4444;
+} /* Merah (Critical) */
+.urgency-tag.warning {
+  background: #ffedd5;
+  color: #f97316;
+} /* Oranye (High) */
+.urgency-tag.info {
+  background: #fef9c3;
+  color: #ca8a04;
+} /* Kuning (Medium) */
+.urgency-tag.success {
+  background: #dbeafe;
+  color: #3b82f6;
+} /* Biru/Hijau (Low) */
+
+.detail-box {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.evidence-quote {
+  font-size: 13px;
+  color: #475569;
+  font-style: italic;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.chevron-icon {
+  transition: transform 0.3s ease;
+}
+
+[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Progress Bar Customization */
+.priority-row .progress {
+  background-color: #f1f5f9;
+  border-radius: 10px;
+}
+.priority-row:first-child {
+  border-top: none;
+}
+
+.bg-danger {
+  background-color: #ef4444 !important;
+}
+.bg-warning {
+  background-color: #f97316 !important;
+}
+.bg-info {
+  background-color: #3b82f6 !important;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+.line-height-relaxed {
+  line-height: 1.6;
+}
 
 .label-caps {
-    display: block;
-    font-size: 11px;
-    font-weight: 800;
-    color: #94a3b8;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
-.evidence-text {
-    font-style: italic;
-    color: #475569;
-    font-size: 14px;
-    line-height: 1.6;
+.border-top-dash {
+  border-top: 1px dashed #e2e8f0;
+}
+.text-purple {
+  color: var(--primary-purple);
 }
 
-.rec-list {
-    font-size: 14px;
-    color: #1e293b;
-    padding-left: 20px;
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Maksimal 2 baris saja */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4; /* Jaga jarak antar baris tetap enak dilihat */
+  white-space: normal; /* Biar dia mau wrap ke bawah */
 }
-
-.border-top-dash { border-top: 1px dashed #e2e8f0; }
-.text-purple { color: #8b5cf6; }
 
 @media (max-width: 890px) {
   .hero .inner-hero {
     padding: 0 2.5em;
   }
-  .section-1 div {
-    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .priority-header {
+    display: none !important;
   }
 }
 
@@ -130,7 +234,6 @@
   html {
     font-size: 90%;
   }
-
   .hero .inner-hero {
     padding: 0 1.5em;
   }
@@ -138,27 +241,10 @@
     padding: 10px;
     font-size: 13px;
   }
-
-  .section-1,
-  .section-2 {
-    width: 100%;
-    padding: 2em;
+  .bento-card {
+    border-radius: 16px;
   }
-
-  .section-1 div {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 390px) {
-  .inner-hero .btn {
-    padding: 10px;
-    font-size: 10px;
-  }
-
-  @media (max-width: 320px) {
-    html {
-      font-size: 78%;
-    }
+  .modern-accordion {
+    border-radius: 16px;
   }
 }

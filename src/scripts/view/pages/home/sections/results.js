@@ -30,32 +30,37 @@ class ResultsSection {
   }
 
   _getTemplate(stats, meta, insights) {
+    const safeInsights = insights || [];
+
     return `
-      <div class="container">
-        <div class="row g-4 mb-5">
-          <div class="col-lg-4">
-            <div class="bento-card p-4 h-100 shadow-soft">
-              <h5 class="fw-800 mb-4 text-center">Sentiment Overview</h5>
-              <div style="height: 200px"><canvas id="sentimentChart"></canvas></div>
-              <div class="text-center mt-3">
-                <span class="h2 fw-800">${meta.total_records}</span>
-                <p class="text-muted small">Processed from ${meta.detected_column}</p>
-              </div>
-            </div>
+    <div class="container">
+      <h4 class="fw-800 mb-4">Priority Issues Detected</h4>
+      
+      <div class="modern-accordion border">
+        <div class="priority-header d-none d-md-flex align-items-center px-4 py-3">
+          <div style="width: 120px;" class="flex-shrink-0">
+            <span class="fs-6 label-caps">Status</span>
           </div>
-          <div class="col-lg-8">
-            <div class="row g-4 h-100">
-              ${this._renderStatCard('Positive', stats.positive_count, 'success', 'bi-emoji-smile')}
-              ${this._renderStatCard('Negative', stats.negative_count, 'danger', 'bi-emoji-frown')}
-            </div>
+          <div class="flex-grow-1 px-3">
+            <span class="fs-6 label-caps">Detected Topic</span>
           </div>
-        </div>
-        <h4 class="fw-900 mb-4">Strategic Insights</h4>
-        <div class="accordion modern-accordion" id="insightAccordion">
-          ${insights.map((item, i) => this._renderInsightItem(item, i)).join('')}
+          <div style="width: 180px;" class="ms-auto flex-shrink-0">
+            <span class="fs-6 label-caps">Impact Score</span>
+          </div>
+          <div style="width: 20px;" class="ms-3 flex-shrink-0"></div> </div>
+
+        <div id="insightAccordion">
+          ${
+  safeInsights.length > 0
+    ? safeInsights
+      .map((item, i) => this._renderInsightItem(item, i))
+      .join('')
+    : '<p class="p-4 text-muted">No strategic insights generated.</p>'
+}
         </div>
       </div>
-    `;
+    </div>
+  `;
   }
 
   _renderStatCard(label, count, color, icon) {
@@ -70,26 +75,78 @@ class ResultsSection {
   }
 
   _renderInsightItem(item, index) {
+    const urgencyColor = this._getSeverity(item.urgency);
+    const impactColor = this._getSeverity(item.percentage_estimate);
+
     return `
-      <div class="insight-item mb-3 shadow-soft bg-white rounded-4 overflow-hidden">
-        <div class="p-4 d-flex align-items-center cursor-pointer" data-bs-toggle="collapse" data-bs-target="#insight-${index}">
-          <span class="urgency-pill ${item.urgency.toLowerCase()}">${item.urgency}</span>
-          <span class="fw-700 ms-3 text-dark">${item.topic}</span>
-          <i class="bi bi-chevron-down ms-auto"></i>
+    <div class="priority-row">
+      <div class="p-4 d-flex align-items-center cursor-pointer collapsed" 
+           data-bs-toggle="collapse" 
+           data-bs-target="#insight-${index}">
+        
+        <div style="width: 120px;" class="d-none d-md-block flex-shrink-0">
+          <span class="urgency-tag ${urgencyColor}">${item.urgency.toUpperCase()}</span>
         </div>
-        <div id="insight-${index}" class="collapse" data-bs-parent="#insightAccordion">
-          <div class="p-4 pt-0 border-top-dash row mt-3">
-             <div class="col-md-6 border-end">
-                <small class="text-muted fw-bold">EVIDENCE</small>
-                <p class="fst-italic small mt-2">"${item.evidence}"</p>
-             </div>
-             <div class="col-md-6">
-                <small class="text-primary fw-bold">RECOMMENDATION</small>
-                <p class="small mt-2">${item.recommendation}</p>
-             </div>
+
+        <div class="flex-grow-1 px-md-3">
+          <span class="fw-700 text-dark d-block line-clamp-2">
+            ${item.topic}
+          </span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto flex-shrink-0" style="width: 180px;">
+          <div class="progress flex-grow-1" style="height: 6px;">
+            <div class="progress-bar bg-${impactColor}" 
+                 style="width: ${item.percentage_estimate}%"></div>
+          </div>
+          <span class="fw-800 small text-dark" style="width: 45px;">${item.percentage_estimate}%</span>
+        </div>
+
+        <div class="ms-3 flex-shrink-0">
+          <i class="bi bi-chevron-down chevron-icon opacity-50"></i>
+        </div>
+      </div>
+
+      <div id="insight-${index}" class="collapse" data-bs-parent="#insightAccordion">
+        <div class="px-4 pb-4">
+          <div class="detail-box p-4 rounded-4 shadow-sm bg-light">
+            <div class="row g-4">
+              <div class="col-md-5">
+                <label class="label-caps mb-2">Evidence from Feedback</label>
+                <div class="evidence-quote">
+                  <i class="bi bi-quote opacity-25 h3 mb-0 me-2"></i>
+                  <span>${item.evidence}</span>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <label class="label-caps mb-2 text-purple">Action Plan</label>
+                <div class="p-3 bg-white rounded-3 border">
+                  <p class="small mb-0 line-height-relaxed">${item.recommendation}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>`;
+      </div>
+    </div>`;
+  }
+
+  _getSeverity(value) {
+    // Jika yang dikirim adalah string (Urgency: Critical, High, etc)
+    if (typeof value === 'string') {
+      const val = value.toLowerCase();
+      if (val === 'critical') return 'danger'; // Merah
+      if (val === 'high') return 'warning'; // Oranye
+      if (val === 'medium') return 'info'; // Biru
+      return 'success'; // Hijau (Low)
+    }
+
+    // Jika yang dikirim adalah angka (Impact Percentage)
+    const pct = parseInt(value, 10);
+    if (pct <= 10) return 'success'; // Hijau
+    if (pct <= 20) return 'info'; // Biru
+    if (pct <= 40) return 'warning'; // Kuning/Oranye
+    return 'danger'; // Merah (>40%)
   }
 }
 
