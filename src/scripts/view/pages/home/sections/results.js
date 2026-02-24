@@ -34,7 +34,7 @@ class ResultsSection {
 
     return `
     <div class="container">
-      <h4 class="fw-800 mb-4">Priority Issues Detected</h4>
+      <h4 class="fw-700 mb-4">Priority Issues Detected</h4>
       
       <div class="modern-accordion border">
         <div class="priority-header d-none d-md-flex align-items-center px-4 py-3">
@@ -89,7 +89,7 @@ class ResultsSection {
         </div>
 
         <div class="flex-grow-1 px-md-3">
-          <span class="fw-700 text-dark d-block line-clamp-2">
+          <span class="fw-600 text-dark d-block line-clamp-2">
             ${item.topic}
           </span>
         </div>
@@ -99,7 +99,7 @@ class ResultsSection {
             <div class="progress-bar bg-${impactColor}" 
                  style="width: ${item.percentage_estimate}%"></div>
           </div>
-          <span class="fw-800 small text-dark" style="width: 45px;">${item.percentage_estimate}%</span>
+          <span class="fw-600 small text-dark" style="width: 45px;">${item.percentage_estimate}%</span>
         </div>
 
         <div class="ms-3 flex-shrink-0">
@@ -132,20 +132,18 @@ class ResultsSection {
   }
 
   _getSeverity(value) {
-    // Jika yang dikirim adalah string (Urgency: Critical, High, etc)
     if (typeof value === 'string') {
       const val = value.toLowerCase();
-      if (val === 'critical') return 'danger'; // Merah
-      if (val === 'high') return 'warning'; // Oranye
-      if (val === 'medium') return 'info'; // Biru
-      return 'success'; // Hijau (Low)
+      if (val === 'critical') return 'danger';
+      if (val === 'high') return 'warning';
+      if (val === 'medium') return 'info';
+      return 'success';
     }
 
-    // Jika yang dikirim adalah angka (Impact Percentage)
     const pct = parseInt(value, 10);
-    if (pct <= 10) return 'success'; // Hijau
-    if (pct <= 20) return 'info'; // Biru
-    if (pct <= 40) return 'warning'; // Kuning/Oranye
+    if (pct <= 10) return 'success';
+    if (pct <= 20) return 'info';
+    if (pct <= 40) return 'warning';
     return 'danger'; // Merah (>40%)
   }
 }
