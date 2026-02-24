@@ -46,38 +46,76 @@
   margin-bottom: 20px;
 }
 
-accordion-button:focus {
-  box-shadow: none;
-  border-color: rgba(0, 0, 0, 0.125);
+/* Bento Card Style */
+.bento-card {
+    background: white;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-.accordion-button:not(.collapsed) {
-  background-color: #f8fafc;
-  color: inherit;
-  box-shadow: none;
+.shadow-soft {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-.accordion-item {
-  border-left: 4px solid transparent;
-  transition: all 0.2s ease;
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
 }
 
-/* Indikator warna di pinggir sesuai urgency */
-.accordion-item:has(.bg-danger) {
-  border-left-color: #dc3545;
-}
-.accordion-item:has(.bg-warning) {
-  border-left-color: #ffc107;
+/* Borders for cards */
+.border-start-positive { 
+  border-left: 6px solid #10b981; }
+.border-start-negative { 
+  border-left: 6px solid #ef4444; }
+
+/* Modern Accordion Customization */
+.insight-item {
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.stat-item {
-  flex: 1;
-  min-width: 120px;
+.insight-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
 }
 
-.bg-light-subtle {
-  background-color: #fcfdfe;
+.urgency-pill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
+
+.critical { background: #fee2e2; color: #ef4444; }
+.high { background: #fee2e2; color: #ef4444; }
+.medium { background: #fee2e2; color: #ef4444; }
+
+.label-caps {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.evidence-text {
+    font-style: italic;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.rec-list {
+    font-size: 14px;
+    color: #1e293b;
+    padding-left: 20px;
+}
+
+.border-top-dash { border-top: 1px dashed #e2e8f0; }
+.text-purple { color: #8b5cf6; }
 
 @media (max-width: 890px) {
   .hero .inner-hero {

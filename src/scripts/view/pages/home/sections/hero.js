@@ -56,14 +56,14 @@ class HeroSection {
     this._heroCta(buttonCta);
   }
 
-  _heroCta(button){
-     button.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.scrollTo({
-               top: document.querySelector('.upload-section').offsetTop - 20,
-               behavior: 'smooth',
-          });
-     });
+  _heroCta(button) {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: document.querySelector('.upload-section').offsetTop - 20,
+        behavior: 'smooth',
+      });
+    });
   }
 }
 
