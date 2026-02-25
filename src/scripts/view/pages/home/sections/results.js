@@ -3,7 +3,7 @@ import SentimentChart from '../../../component/chart';
 class ResultsSection {
   constructor() {
     this._container = document.createElement('section');
-    this._container.className = 'results-section py-5 d-block';
+    this._container.className = 'results-section py-5 d-none';
   }
 
   render() {
@@ -34,20 +34,27 @@ class ResultsSection {
 
     return `
     <div class="container">
-      <h4 class="fw-700 mb-4">Priority Issues Detected</h4>
+      <h4 class="fw-800 mb-4">Priority Issues Detected</h4>
       
-      <div class="modern-accordion border">
-        <div class="priority-header d-none d-md-flex align-items-center px-4 py-3">
+      <div class="modern-accordion">
+        <div class="priority-header d-none d-md-flex align-items-center p-4">
           <div style="width: 120px;" class="flex-shrink-0">
-            <span class="fs-6 label-caps">Status</span>
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Urgency level assigned by AI analysis">
+              Status <i class="bi bi-info-circle ms-1 help-icon"></i>
+            </span>
           </div>
           <div class="flex-grow-1 px-3">
-            <span class="fs-6 label-caps">Detected Topic</span>
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Main issue category found in feedback">
+              Detected Topic <i class="bi bi-info-circle ms-1 help-icon"></i>
+            </span>
           </div>
-          <div style="width: 180px;" class="ms-auto flex-shrink-0">
-            <span class="fs-6 label-caps">Impact Score</span>
+          <div style="width: 180px;" class="ms-auto flex-shrink-0 text-end pe-4">
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Percentage of users affected by this issue">
+              Impact Score <i class="bi bi-info-circle ms-1 help-icon"></i>
+            </span>
           </div>
-          <div style="width: 20px;" class="ms-3 flex-shrink-0"></div> </div>
+          <div style="width: 20px;" class="ms-3 flex-shrink-0"></div>
+        </div>
 
         <div id="insightAccordion">
           ${

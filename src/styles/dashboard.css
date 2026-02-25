@@ -70,11 +70,12 @@
 }
 
 .modern-accordion {
-  background: white;
+  background: #ffff;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
   border: 1px solid #f1f5f9;
+  position: relative;
 }
 
 .priority-row {
@@ -97,13 +98,12 @@
 .priority-header {
   background-color: #f5f3ff;
   border-bottom: 1px solid #e2e8f0;
-  border-top-left-radius: 24px; /* Biar sinkron ama lengkungan container utama */
+  border-top-left-radius: 24px;
   border-top-right-radius: 24px;
 }
 
 .priority-header .label-caps {
   margin-bottom: 0;
-  /* Pake warna indigo/blue biar nggak mati (bukan sekadar abu-abu) */
   color: var(--primary-purple);
   font-size: 11px;
   font-weight: 800;
@@ -216,6 +216,73 @@
   overflow: hidden;
   line-height: 1.4; /* Jaga jarak antar baris tetap enak dilihat */
   white-space: normal; /* Biar dia mau wrap ke bawah */
+}
+
+/* --- Help Icon Styling --- */
+.help-icon {
+  font-size: 14px;
+  color: #94a3b8;
+  opacity: 0.7;
+}
+
+.help-icon:hover {
+  color: var(--primary-blue);
+}
+
+.priority-header .label-caps {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+/* --- Custom Modern Tooltip --- */
+.custom-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.custom-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 8px 12px;
+  background-color: #1e293b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.custom-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1e293b transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.custom-tooltip:hover::before,
+.custom-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 @media (max-width: 890px) {
