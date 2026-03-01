@@ -17,12 +17,12 @@ class Popup {
         <div class="popup-box">
           <div class="popup-content">
             <div class="popup-icon mb-3">
-              <i class="bi bi-exclamation-circle text-warning" style="font-size: 3rem;"></i>
+              <i class="bi bi-exclamation-circle text-primary-emphasis" style="font-size: 3rem;"></i>
             </div>
             <p class="popup-message mb-4"></p>
             <div class="popup-actions d-flex gap-2 justify-content-center">
               <button class="btn btn-light btn-cancel rounded-pill px-4">Batal</button>
-              <button class="btn btn-warning btn-confirm rounded-pill px-4 fw-bold">Oke</button>
+              <button class="btn btn-primary btn-confirm rounded-pill px-4 fw-bold">Oke</button>
             </div>
           </div>
         </div>

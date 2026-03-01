@@ -49,45 +49,99 @@ class UploadsSection {
   async _handleUpload(file, onSuccess, onError) {
     if (this._isUploading) return;
 
+    // Reading Files
+    this._updateStatus('reading');
+
     const ext = file.name.split('.').pop().toLowerCase();
     if (!['csv', 'xlsx', 'xls'].includes(ext)) {
-      alert('Format file tidak didukung! Gunakan CSV atau Excel.');
+      this._popup.show('Format file tidak didukung! Gunakan CSV atau Excel.');
+      this._updateStatus('idle');
       return;
     }
 
-    this._setLoading(true);
+    this._isUploading = true;
+
+    // eslint-disable-next-line no-promise-executor-return
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     try {
+      // Preprocessing
+      this._updateStatus('preprocessing');
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Analyzing
+      setTimeout(() => {
+        if (this._isUploading) this._updateStatus('analyzing');
+      }, 1500);
+
       const data = await Api.analyzeUpload(file);
 
       if (data.status === 'success') {
         onSuccess(data);
       } else {
-        throw new Error(data.detail || 'Gagal menganalisis file');
+        throw new Error(data.detail || 'Failed to analyze file');
       }
     } catch (err) {
+      console.error(err);
+      this._popup.show(`Failed to process file: ${err.message}`);
       if (onError) onError(err.message);
-      alert(`Error: ${err.message}`);
     } finally {
-      this._setLoading(false);
+      this._isUploading = false;
+      this._updateStatus('idle');
     }
   }
 
-  _setLoading(isLoading) {
-    this._isUploading = isLoading;
+  _updateStatus(stage) {
     const btn = this._container.querySelector('#btn-browse');
     const statusText = this._container.querySelector('#upload-status-text');
 
-    if (isLoading) {
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
-      statusText.innerText = 'Models are analyzing your data. This might take a minute...';
+    const stages = {
+      reading: {
+        btn: '<span class="spinner-border spinner-border-sm me-2"></span>Reading...',
+        text: 'Reading and validating your dataset...',
+      },
+      preprocessing: {
+        btn: '<span class="spinner-border spinner-border-sm me-2"></span>Preprocessing...',
+        text: 'Cleaning data and preparing for AI models...',
+      },
+      analyzing: {
+        btn: '<span class="spinner-grow spinner-grow-sm me-2"></span>Analyzing...',
+        text: 'Insightly AI is pinpointing strategic issues. This might take a moment...',
+      },
+      idle: {
+        btn: 'Browse Files',
+        text: 'Drag & drop your CSV or Excel here, or click to browse.',
+      },
+    };
+
+    const current = stages[stage];
+    btn.disabled = stage !== 'idle';
+    btn.innerHTML = current.btn;
+    statusText.innerText = current.text;
+
+    if (stage === 'analyzing') {
+      statusText.classList.add('fw-bold', 'text-primary');
     } else {
-      btn.disabled = false;
-      btn.innerHTML = 'Browse Files';
-      statusText.innerText = 'Drag & drop your CSV or Excel here, or click to browse.';
+      statusText.classList.remove('fw-bold', 'text-primary');
     }
   }
+
+  // _setLoading(isLoading) {
+  //   this._isUploading = isLoading;
+  //   const btn = this._container.querySelector('#btn-browse');
+  //   const statusText = this._container.querySelector('#upload-status-text');
+
+  //   if (isLoading) {
+  //     btn.disabled = true;
+  //     btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+  //     statusText.innerText = 'Models are analyzing your data. This might take a minute...';
+  //   } else {
+  //     btn.disabled = false;
+  //     btn.innerHTML = 'Browse Files';
+  //     statusText.innerText = 'Drag & drop your CSV or Excel here, or click to browse.';
+  //   }
+  // }
 
   _getTemplate() {
     return `
