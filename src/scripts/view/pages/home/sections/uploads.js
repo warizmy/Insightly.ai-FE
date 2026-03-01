@@ -1,4 +1,5 @@
 import Api from '../../../../utils/api';
+import Popup from '../../../../utils/popUp';
 
 class UploadsSection {
   constructor() {
@@ -6,6 +7,7 @@ class UploadsSection {
     this._container.className = 'upload-section py-5 bg-light';
     this._container.id = 'upload-zone';
     this._isUploading = false;
+    this._popup = new Popup();
   }
 
   render() {
