@@ -43,7 +43,7 @@ class Dashboard {
     //         topic: 'Login & Password Reset Loop Issues',
     //         evidence:
     //           'password salah setelah 3 kali salah. kemudian suruh bikin ulang, lah pas bikin ulang pdhl udh pake password yang beda-beda malah diulang ulang terus proses nya, ngga bisa terproses perbaiki sistem lu nihh',
-    //         percentage_estimate: 11,
+    //         percentage_estimate: 25,
     //         recommendation:
     //           'Review dan optimalkan alur login dan reset password untuk mengurangi kompleksitas dan loop error. Implementasikan logging detail yang lebih granular untuk setiap kegagalan login/reset guna identifikasi pola anomali dan perbaikan cepat.',
     //       },

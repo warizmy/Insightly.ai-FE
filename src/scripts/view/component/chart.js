@@ -13,16 +13,16 @@ class SentimentChart {
         datasets: [
           {
             data,
-            backgroundColor: ['#10b981', '#ef4444', '#94a3b8'],
+            backgroundColor: ['#10b981', '#ef4444', '#3b82f6'],
             borderWidth: 0,
           },
         ],
       },
       options: {
-        cutout: '80%',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
+        cutout: '75%', // Bikin lubang tengah makin gede buat naruh teks
+        plugins: {
+          legend: { display: false }, // Sembunyikan legend bawaan biar clean
+        },
       },
     });
   }

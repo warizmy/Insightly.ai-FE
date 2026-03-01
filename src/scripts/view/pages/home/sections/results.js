@@ -34,23 +34,57 @@ class ResultsSection {
 
     return `
     <div class="container">
-      <h4 class="fw-800 mb-4">Priority Issues Detected</h4>
+      <div class="row g-4 mb-5">
+        <div class="col-lg-5">
+          <div class="bento-card p-4 h-100 shadow-soft">
+            <h5 class="fw-700 mb-4 text-dark">Sentiment Distribution</h5>
+            <div class="chart-wrapper">
+              <canvas id="sentimentChart"></canvas>
+              <div class="chart-overlay">
+                <span class="d-block h2 fw-800 mb-0">${meta.total_records.toLocaleString()}</span>
+                <span class="label-caps" style="font-size: 8px;">Total Records</span>
+              </div>
+            </div>
+            <div class="text-center mt-4 p-3 bg-light rounded-4">
+              <p class="small text-muted mb-0">
+                <i class="bi bi-file-earmark-bar-graph me-1"></i> Source File: 
+                  <span class="fw-700 text-dark text-truncate d-inline-block align-middle" style="max-width: 200px;">
+                    ${meta.filename}
+                  </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="row g-4 h-100">
+            ${this._renderStatCard('Positive Feedback', stats.positive_count, 'success', 'bi-emoji-smile-fill')}
+            ${this._renderStatCard('Neutral Mentions', stats.neutral_count, 'info', 'bi-emoji-neutral-fill')}
+            ${this._renderStatCard('Negative Feedback', stats.negative_count, 'danger', 'bi-emoji-frown-fill')}
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column align-items-start mb-4 gap-1">
+        <h4 class="fw-800 mb-0">Priority Issues Detected</h4>
+        <span class="text-muted" style="font-size: 14px;">Analysis based on ${stats.negative_count.toLocaleString()} negative feedbacks detected (${((stats.negative_count / meta.total_records) * 100).toFixed(2)}% of total records)</span>
+      </div>
       
       <div class="modern-accordion">
         <div class="priority-header d-none d-md-flex align-items-center p-4">
           <div style="width: 120px;" class="flex-shrink-0">
-            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Urgency level assigned by AI analysis">
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Urgency level of the issue based on sentiment and impact analysis">
               Status <i class="bi bi-info-circle ms-1 help-icon"></i>
             </span>
           </div>
           <div class="flex-grow-1 px-3">
-            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Main issue category found in feedback">
-              Detected Topic <i class="bi bi-info-circle ms-1 help-icon"></i>
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Specific category of the detected problem">
+              Specific Issue <i class="bi bi-info-circle ms-1 help-icon"></i>
             </span>
           </div>
           <div style="width: 180px;" class="ms-auto flex-shrink-0 text-end pe-4">
-            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Percentage of users affected by this issue">
-              Impact Score <i class="bi bi-info-circle ms-1 help-icon"></i>
+            <span class="fs-6 label-caps custom-tooltip" data-tooltip="Percentage of contribution of this topic to total complaints (Negative Feedback) detected">
+              % of Complaints <i class="bi bi-info-circle ms-1 help-icon"></i>
             </span>
           </div>
           <div style="width: 20px;" class="ms-3 flex-shrink-0"></div>
@@ -62,21 +96,25 @@ class ResultsSection {
     ? safeInsights
       .map((item, i) => this._renderInsightItem(item, i))
       .join('')
-    : '<p class="p-4 text-muted">No strategic insights generated.</p>'
+    : '<p class="p-4 text-muted text-center">No strategic insights generated.</p>'
 }
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
   }
 
   _renderStatCard(label, count, color, icon) {
     return `
-      <div class="col-md-6">
-        <div class="bento-card p-4 shadow-soft h-100 border-start-${color}">
-          <i class="bi ${icon} text-${color} h3"></i>
-          <h3 class="fw-800 mt-2">${count}</h3>
-          <p class="text-muted mb-0">${label} Feedbacks</p>
+      <div class="col-md-4 col-sm-6">
+        <div class="bento-card p-4 shadow-soft h-100 border-bottom-custom-${color}">
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-shape bg-${color}-soft text-${color} rounded-circle me-3">
+              <i class="bi ${icon}"></i>
+            </div>
+            <span class="label-caps text-muted" style="font-size: 9px;">${label}</span>
+          </div>
+          <h2 class="fw-800 mb-1">${count.toLocaleString()}</h2>
+          <p class="text-muted small mb-0">Identified entries</p>
         </div>
       </div>`;
   }
