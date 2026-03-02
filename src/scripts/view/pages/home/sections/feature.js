@@ -29,7 +29,7 @@ class FeatureSection {
             <span class="label-caps text-primary mb-3 d-block">Dual-Engine Intelligence</span>
             <h2 class="fw-bold mb-4">Hybrid AI for Local Context</h2>
             <p class="text-muted lead-sm mb-0">
-              Kami menggabungkan <strong>IndoBERT</strong> untuk memahami nuansa bahasa Indonesia yang kompleks (slang, sarkasme, konteks lokal) dengan <strong>Gemini Pro</strong> untuk penalaran logis tingkat tinggi.
+              We combine the power of IndoBERT for precise sentiment analysis with Gemini's strategic topic extraction, giving you insights that are both accurate and actionable in the Indonesian market.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ class FeatureSection {
             <span class="label-caps text-success mb-3 d-block">Beyond Sentiments</span>
             <h2 class="fw-800 mb-4">Turn Data into Decisions</h2>
             <p class="text-muted lead-sm mb-0">
-              Jangan cuma melihat grafik. Insightly mendeteksi <strong>Priority Issues</strong> yang sedang terjadi dan memberikan rekomendasi langkah konkret yang bisa langsung tim Anda eksekusi.
+              Insightly doesn't just analyze feedback, it translates it into clear, prioritized action plans that help you address customer pain points and capitalize on opportunities for growth.
             </p>
           </div>
         </div>
@@ -61,15 +61,9 @@ class FeatureSection {
             <span class="label-caps text-info mb-3 d-block">Presentation Ready</span>
             <h2 class="fw-800 mb-4">Export Reports in Seconds</h2>
             <p class="text-muted lead-sm mb-0">
-              Selesaikan analisis ribuan feedback dan miliki laporan PDF profesional dengan satu klik. Siap dipresentasikan di depan stakeholder tanpa perlu edit manual lagi.
+              Generate professional PDF reports with a single click, making it easy to share insights and recommendations with your executive team and stakeholders.
             </p>
           </div>
-        </div>
-        <div class="text-center mt-5 pt-4">
-          <button id="cta-start" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold shadow-indigo-lg">
-              Get Started Now <i class="bi bi-arrow-down ms-2"></i>
-          </button>
-          <p class="text-muted small mt-3">No registration required. Just upload and analyze.</p>
         </div>
       </div>
     `;

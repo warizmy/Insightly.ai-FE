@@ -6,16 +6,6 @@
   justify-content: center;
 }
 
-.hero-btn {
-  border: none;
-  transition: all 0.2s ease;
-}
-
-.hero-btn:hover {
-  filter: brightness(0.95);
-  transform: translateY(-2px);
-}
-
 /* --- VERTICAL TIMELINE (GUIDE) --- */
 .vertical-timeline {
   max-width: 800px;
@@ -99,7 +89,23 @@
   justify-content: center;
   position: relative;
   border: 1px solid #f1f5f9;
-  transition: all 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  overflow: visible;
+}
+
+.feature-graphic:hover {
+  transform: translateY(-15px) scale(1.02);
+}
+
+feature-graphic.shadow-indigo:hover {
+  box-shadow: 0 40px 80px -15px rgba(124, 58, 237, 0.15);
+}
+.feature-graphic.shadow-emerald:hover {
+  box-shadow: 0 40px 80px -15px rgba(16, 185, 129, 0.15);
+}
+.feature-graphic.shadow-blue:hover {
+  box-shadow: 0 40px 80px -15px rgba(59, 130, 246, 0.15);
 }
 
 .floating-badge {
@@ -112,20 +118,187 @@
   border-radius: 100px;
   font-weight: 700;
   font-size: 0.8rem;
+  transition: all 0.3s ease;
+  z-index: 2;
 }
 
-.shadow-indigo {
-  box-shadow: 0 30px 60px -15px rgba(124, 58, 237, 0.08);
-}
-.shadow-emerald {
-  box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.08);
-}
-.shadow-blue {
-  box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.08);
+.feature-graphic:hover .floating-badge {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 890px) {
-  .hero .inner-hero {
-    padding: 0 2.5em;
+.lead-sm {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.mini-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Biar icon gak gepeng pas teks kepanjangan */
+  transition: all 0.3s ease;
+}
+
+/* --- FAQ SECTION STYLING --- */
+.faq-item {
+  border-color: #f1f5f9 !important;
+}
+
+.faq-header {
+  transition: all 0.3s ease;
+}
+
+.faq-header:hover h6 {
+  color: var(--primary-purple) !important;
+}
+
+.faq-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  background: #f5f3ff;
+  color: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animasi Icon Plus jadi Silang (Rotasi) */
+.faq-header:not(.collapsed) .faq-icon-wrapper {
+  background: var(--primary-purple);
+  color: white;
+  transform: rotate(135deg); /* Berubah jadi 'x' */
+}
+
+.faq-header:not(.collapsed) h6 {
+  color: var(--primary-purple) !important;
+}
+
+/* Custom Collapse Animation */
+.faq-accordion .collapse {
+  transition: all 0.3s ease;
+}
+
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, #6d28d9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efek hiasan lingkaran di background banner */
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.shadow-indigo-lg {
+  box-shadow: 0 30px 60px -10px rgba(109, 40, 217, 0.3);
+}
+
+.cta-banner .btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- RESPONSIVE GUIDE & TIMELINE --- */
+
+/* Layar Tablet / iPad (max-width: 992px) */
+@media (max-width: 992px) {
+  .vertical-timeline {
+    max-width: 95%; /* Lebih lebar di tablet */
+  }
+
+  .mini-icon {
+    width: 50px; /* Icon digedein */
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .timeline-content {
+    padding: 28px;
+  }
+}
+
+/* Layar HP (max-width: 768px) */
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 45px; /* Kurangi spasi kiri biar gak terlalu menjorok */
+    padding-bottom: 70px; /* Kurangi jarak antar step biar gak capek scroll */
+  }
+
+  .timeline-dot {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    left: -2px; /* Geser dikit biar pas di tengah garis */
+  }
+
+  .timeline-item::before {
+    left: 15px; /* Sesuaikan posisi garis dengan dot baru */
+  }
+
+  .mini-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    margin-right: 12px !important;
+  }
+
+  .timeline-content {
+    padding: 20px; /* Padding dalem box lebih efisien */
+    border-radius: 20px;
+  }
+
+  .timeline-content h5 {
+    font-size: 1.1rem; /* Judul sedikit lebih kecil biar proporsional */
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+  }
+  .faq-header h6 {
+    font-size: 14px;
+    padding-right: 20px;
+  }
+}
+
+/* Layar HP Kecil (max-width: 480px) */
+@media (max-width: 480px) {
+  .timeline-item {
+    padding-left: 40px;
+  }
+
+  .timeline-dot {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    left: 0;
+  }
+
+  .timeline-item::before {
+    left: 14px;
+  }
+
+  /* Header Step: Icon di atas, Teks di bawah kalau sangat sempit */
+  .timeline-content .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .mini-icon {
+    margin-bottom: 12px;
   }
 }

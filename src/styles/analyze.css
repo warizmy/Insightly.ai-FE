@@ -1,4 +1,4 @@
-/* --- UPLOAD SECTION --- */
+/* --- 1. UPLOAD SECTION --- */
 .border-dashed {
   border: 2px dashed #cbd5e1;
   transition: all 0.3s ease;
@@ -10,7 +10,7 @@
   background-color: #f1f5f9;
 }
 
-/* --- BENTO & STAT CARDS --- */
+/* --- 2. BENTO & STAT CARDS --- */
 .bento-card {
   background: white;
   border-radius: 24px;
@@ -26,14 +26,15 @@
 }
 
 .icon-shape {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
+/* Stat Card Colors */
 .border-bottom-custom-success {
   border-bottom: 4px solid #10b981;
 }
@@ -44,7 +45,17 @@
   border-bottom: 4px solid #ef4444;
 }
 
-/* --- CHART STYLING --- */
+.bg-success-soft {
+  background-color: #ecfdf5;
+}
+.bg-info-soft {
+  background-color: #eff6ff;
+}
+.bg-danger-soft {
+  background-color: #fff1f2;
+}
+
+/* --- 3. CHART STYLING --- */
 .chart-wrapper {
   position: relative;
   height: 250px;
@@ -63,12 +74,13 @@
   pointer-events: none;
 }
 
-/* --- MODERN ACCORDION / RESULTS --- */
+/* --- 4. MODERN ACCORDION (The Result Table) --- */
 .modern-accordion {
-  background: #ffff;
+  background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
   border: 1px solid #f1f5f9;
+  overflow: visible !important;
+  position: relative;
 }
 
 .priority-header {
@@ -76,6 +88,9 @@
   border-bottom: 1px solid #e2e8f0;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
+  position: relative;
+  z-index: 10;
+  overflow: visible !important;
 }
 
 .priority-row {
@@ -87,14 +102,15 @@
   background-color: #f8fafc;
 }
 
+/* Urgency Tags */
 .urgency-tag {
   font-size: 10px;
   font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
   display: inline-block;
+  text-transform: uppercase;
 }
-
 .urgency-tag.danger {
   background: #fee2e2;
   color: #ef4444;
@@ -112,11 +128,79 @@
   color: #3b82f6;
 }
 
-/* --- TOOLTIP & UTILITIES --- */
+/* --- 5. INSIGHT DETAILS (EVIDENCE & ACTION PLAN) --- */
+.detail-box {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.evidence-quote {
+  font-size: 14px;
+  color: #475569;
+  font-style: italic;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+}
+
+.evidence-quote i {
+  color: var(--primary-purple);
+  margin-top: -5px;
+}
+
+/* --- 6. FIX TOOLTIP POSITIONING --- */
 .custom-tooltip {
   position: relative;
   cursor: help;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
 }
+
+span.label-caps.custom-tooltip {
+  display: inline-flex !important;
+  margin-bottom: 0;
+}
+
+.custom-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  /* Muncul tepat di atas teks */
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 10px 14px;
+  background-color: #1e293b;
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 1.4;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  z-index: 99999 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.custom-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border: 6px solid transparent;
+  border-top-color: #1e293b;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  z-index: 99999 !important;
+}
+
 .custom-tooltip:hover::before,
 .custom-tooltip:hover::after {
   opacity: 1;
@@ -124,8 +208,95 @@
   transform: translateX(-50%) translateY(0);
 }
 
+/* Miscellaneous */
+.chevron-icon {
+  transition: transform 0.3s ease;
+}
+
+[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.help-icon {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* --- RESPONSIVE OPTIMIZATION --- */
 @media (max-width: 768px) {
+  /* 1. Hilangkan header tabel karena makan tempat */
   .priority-header {
     display: none !important;
+  }
+
+  /* 2. Ubah padding row agar lebih lega di jempol */
+  .priority-row > div[role="button"] {
+    flex-direction: column; /* Tumpuk konten ke bawah */
+    align-items: flex-start !important;
+    padding: 20px !important;
+    gap: 12px;
+  }
+
+  /* 3. Urgency Tag (Pindah ke baris paling atas) */
+  .priority-row .flex-shrink-0:first-child {
+    width: auto !important; /* Hilangkan fixed width 120px */
+    margin-bottom: 4px;
+  }
+
+  /* 4. Issue Title (Bikin lebih lebar) */
+  .priority-row .flex-grow-1 {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .priority-row .fw-600 {
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-line-clamp: 3; /* Kasih 3 baris di mobile biar jelas */
+  }
+
+  /* 5. Progress Bar (% of Complaints) */
+  .priority-row .ms-auto {
+    width: 100% !important; /* Lebarin full di bawah judul */
+    margin-left: 0 !important;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed #f1f5f9;
+  }
+
+  .priority-row .progress {
+    height: 8px !important; /* Tebalin dikit biar enak dilihat */
+  }
+
+  /* 6. Chevron (Pindah posisi ke pojok kanan atas) */
+  .priority-row .ms-3.flex-shrink-0 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  /* 7. Detail Box (Evidence & Action Plan) */
+  .detail-box {
+    padding: 20px !important;
+  }
+
+  .evidence-quote {
+    margin-bottom: 15px;
+  }
+}
+
+/* Extra Small Screen (HP Kecil) */
+@media (max-width: 480px) {
+  .results-section {
+    padding-top: 20px !important;
+  }
+
+  .bento-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-primary.rounded-pill {
+    width: 100%; /* Tombol export jadi full width di HP */
+    margin-top: 10px;
   }
 }

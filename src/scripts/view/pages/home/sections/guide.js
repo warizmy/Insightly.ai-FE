@@ -38,7 +38,7 @@ class GuideSection {
           <div class="timeline-dot bg-blue">2</div>
           <div class="timeline-content">
             <div class="d-flex align-items-center mb-2">
-              <div class="mini-icon bg-blue-soft text-blue me-3">
+              <div class="mini-icon bg-primary-soft text-primary me-3">
                 <i class="bi bi-cpu-fill"></i>
               </div>
               <h5 class="fw-bold mb-0">Hybrid AI Processing</h5>
@@ -51,9 +51,9 @@ class GuideSection {
 
         <div class="timeline-item">
           <div class="timeline-dot bg-emerald">3</div>
-          <div class="timeline-content border-0">
+          <div class="timeline-content">
             <div class="d-flex align-items-center mb-2">
-              <div class="mini-icon bg-emerald-soft text-emerald me-3">
+              <div class="mini-icon bg-emerald-soft text-success me-3">
                 <i class="bi bi-file-earmark-check-fill"></i>
               </div>
               <h5 class="fw-bold mb-0">Unlock Actionable Strategies</h5>
