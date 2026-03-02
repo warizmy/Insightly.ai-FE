@@ -1,0 +1,36 @@
+.docs-sidebar {
+  height: calc(100vh - 70px);
+  position: sticky;
+  top: 70px;
+  background: #ffffff;
+}
+
+.docs-sidebar .nav-link {
+  color: #64748b;
+  padding: 10px 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.docs-sidebar .nav-link:hover,
+.docs-sidebar .nav-link.active {
+  background: #f5f3ff;
+  color: var(--primary-purple);
+}
+
+.code-block {
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  border: 1px solid #334155;
+}
+
+.mb-100 {
+  margin-bottom: 100px;
+}
+.nav-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  display: block;
+}

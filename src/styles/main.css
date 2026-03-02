@@ -4,6 +4,7 @@
 @import "footer.css";
 @import "about.css";
 @import "analyze.css";
+@import "docs.css";
 
 :root {
   --primary-blue: #3b82f6;
