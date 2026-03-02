@@ -1,5 +1,5 @@
-import Api from '../../../../utils/api';
-import Popup from '../../../../utils/popUp';
+import Api from '../../services/api';
+import Popup from '../../utils/popUp';
 
 class UploadsSection {
   constructor() {
@@ -10,7 +10,7 @@ class UploadsSection {
     this._popup = new Popup();
   }
 
-  render() {
+  _render() {
     this._container.innerHTML = this._getTemplate();
     return this._container;
   }

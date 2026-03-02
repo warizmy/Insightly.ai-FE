@@ -1,0 +1,131 @@
+/* --- UPLOAD SECTION --- */
+.border-dashed {
+  border: 2px dashed #cbd5e1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.border-dashed:hover {
+  border-color: var(--primary-blue);
+  background-color: #f1f5f9;
+}
+
+/* --- BENTO & STAT CARDS --- */
+.bento-card {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.icon-shape {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.border-bottom-custom-success {
+  border-bottom: 4px solid #10b981;
+}
+.border-bottom-custom-info {
+  border-bottom: 4px solid #3b82f6;
+}
+.border-bottom-custom-danger {
+  border-bottom: 4px solid #ef4444;
+}
+
+/* --- CHART STYLING --- */
+.chart-wrapper {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* --- MODERN ACCORDION / RESULTS --- */
+.modern-accordion {
+  background: #ffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
+}
+
+.priority-header {
+  background-color: #f5f3ff;
+  border-bottom: 1px solid #e2e8f0;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.priority-row {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.priority-row:hover {
+  background-color: #f8fafc;
+}
+
+.urgency-tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.urgency-tag.danger {
+  background: #fee2e2;
+  color: #ef4444;
+}
+.urgency-tag.warning {
+  background: #ffedd5;
+  color: #f97316;
+}
+.urgency-tag.info {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+.urgency-tag.success {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+/* --- TOOLTIP & UTILITIES --- */
+.custom-tooltip {
+  position: relative;
+  cursor: help;
+}
+.custom-tooltip:hover::before,
+.custom-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .priority-header {
+    display: none !important;
+  }
+}

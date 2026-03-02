@@ -1,9 +1,9 @@
-import About from '../view/pages/about';
-import Dashboard from '../view/pages/home/dashboard';
+import Analyze from '../view/pages/analyze';
+import Home from '../view/pages/home/home';
 
 const routes = {
-  '/': Dashboard,
-  '/about': About,
+  '/': Home,
+  '/analyze': Analyze,
 };
 
 export default routes;

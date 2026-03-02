@@ -17,16 +17,13 @@ class Navbar {
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#/">Dashboard</a>
+              <a class="nav-link" href="#/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/howitworks">How it Works</a>
+              <a class="nav-link" href="#/analyze">Analyze</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#/apidocs">API Docs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/about">About</a>
             </li>
           </ul>
         </div>

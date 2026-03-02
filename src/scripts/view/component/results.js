@@ -1,5 +1,5 @@
 import { jsPDF } from 'jspdf';
-import SentimentChart from '../../../component/chart';
+import SentimentChart from './chart';
 
 class ResultsSection {
   constructor() {

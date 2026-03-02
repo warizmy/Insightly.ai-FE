@@ -11,8 +11,14 @@ class FeatureSection {
 
   _render() {
     this._container.innerHTML = `
-      <div class="container">
-        <div class="row align-items-center mb-150">
+      <div class="container pb-5 mb-5">
+        <div class="text-center mb-5 pb-1">
+          <h2 class="text-center fw-bold">
+            Why Insightly <span class="main-gradient-text">Stands Out</span>
+          </h2>
+          <p class="text-center text-muted">Our unique approach to feedback analysis sets us apart from the competition</p>
+        </div>
+        <div class="row align-items-center mb-5 pb-4">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="feature-graphic shadow-indigo">
               <i class="bi bi-cpu text-primary display-1"></i>
@@ -21,14 +27,14 @@ class FeatureSection {
           </div>
           <div class="col-lg-5 offset-lg-1">
             <span class="label-caps text-primary mb-3 d-block">Dual-Engine Intelligence</span>
-            <h2 class="fw-800 mb-4">Hybrid AI for Local Context</h2>
+            <h2 class="fw-bold mb-4">Hybrid AI for Local Context</h2>
             <p class="text-muted lead-sm mb-0">
               Kami menggabungkan <strong>IndoBERT</strong> untuk memahami nuansa bahasa Indonesia yang kompleks (slang, sarkasme, konteks lokal) dengan <strong>Gemini Pro</strong> untuk penalaran logis tingkat tinggi.
             </p>
           </div>
         </div>
 
-        <div class="row align-items-center mb-150 flex-lg-row-reverse">
+        <div class="row align-items-center mb-5 pb-4 flex-lg-row-reverse">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="feature-graphic shadow-emerald">
               <i class="bi bi-lightbulb-fill text-success display-1"></i>
@@ -59,13 +65,12 @@ class FeatureSection {
             </p>
           </div>
         </div>
-      </div>
-
-      <div class="text-center mt-5 pt-4">
-        <button id="cta-start" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold shadow-indigo-lg">
-            Get Started Now <i class="bi bi-arrow-down ms-2"></i>
-        </button>
-        <p class="text-muted small mt-3">No registration required. Just upload and analyze.</p>
+        <div class="text-center mt-5 pt-4">
+          <button id="cta-start" class="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold shadow-indigo-lg">
+              Get Started Now <i class="bi bi-arrow-down ms-2"></i>
+          </button>
+          <p class="text-muted small mt-3">No registration required. Just upload and analyze.</p>
+        </div>
       </div>
     `;
   }

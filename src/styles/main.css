@@ -1,13 +1,98 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "navbar.css";
-@import "dashboard.css";
+@import "home.css";
 @import "footer.css";
 @import "about.css";
+@import "analyze.css";
 
 :root {
   --primary-blue: #3b82f6;
   --primary-purple: #8b5cf6;
   --bg-light: #f8fafc;
+}
+
+/* --- TYPOGRAPHY HELPERS --- */
+.fw-800 {
+  font-weight: 800;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fw-600 {
+  font-weight: 600;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+.line-height-relaxed {
+  line-height: 1.6;
+}
+
+.text-purple {
+  color: var(--primary-purple);
+}
+.text-primary {
+  color: var(--primary-blue) !important;
+}
+
+.label-caps {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* --- LAYOUT & BORDERS --- */
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.border-top-dash {
+  border-top: 1px dashed #e2e8f0;
+}
+
+.rounded-4 {
+  border-radius: 1rem !important;
+}
+.rounded-5 {
+  border-radius: 1.5rem !important;
+}
+
+/* --- TEXT CLAMPING (Potong Teks Panjang) --- */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* --- UTILITY ANIMATIONS --- */
+@keyframes pulse-text {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.pulse-animation {
+  animation: pulse-text 2s infinite;
+}
+
+/* --- CURSOR HELPERS --- */
+.cursor-pointer {
+  cursor: pointer;
 }
 
 * {
@@ -35,7 +120,12 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 800;
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, var(--primary-purple), #6d28d9);
+  color: white;
+  border: none;
 }
 
 .top-progress-bar-container {
@@ -101,6 +191,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s;
 }
+
 .lazyloaded {
   opacity: 1;
 }
