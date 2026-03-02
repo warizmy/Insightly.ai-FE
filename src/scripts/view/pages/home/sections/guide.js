@@ -1,7 +1,7 @@
 class GuideSection {
   constructor() {
     this._container = document.createElement('section');
-    this._container.className = 'guide-section py-5';
+    this._container.className = 'guide-section py-5 my-5';
     this._container.id = 'how-it-works';
     this._render();
   }
@@ -12,57 +12,59 @@ class GuideSection {
 
   _render() {
     this._container.innerHTML = `
-      <div class="container">
-        <div class="text-center mb-5">
-          <span class="label-caps text-primary mb-2 d-block">The Process</span>
-          <h2 class="fw-800 text-dark">How Insightly Works</h2>
-          <p class="text-muted mx-auto" style="max-width: 500px;">
-            Turn raw customer feedback into strategic decisions in three simple steps.
-          </p>
-        </div>
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <h2 class="fw-800 text-dark">Simple 3-Step Analysis</h2>
+      </div>
 
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4">
-            <div class="step-card text-center p-4 h-100">
-              <div class="step-number">1</div>
-              <div class="step-icon-wrapper mb-4">
+      <div class="vertical-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot bg-purple">1</div>
+          <div class="timeline-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="mini-icon bg-purple-soft text-purple me-3">
                 <i class="bi bi-cloud-arrow-up-fill"></i>
               </div>
-              <h5 class="fw-700">Connect Data</h5>
-              <p class="small text-muted mb-0">
-                Upload your CSV or Excel files. We support various feedback formats and automatically detect the right columns.
-              </p>
+              <h5 class="fw-700 mb-0">Connect Your Feedback Data</h5>
             </div>
+            <p class="text-muted mb-0">
+              Upload your CSV or Excel files from Google Play Store, App Store, or social media exports. Insightly automatically identifies the right columns for analysis.
+            </p>
           </div>
+        </div>
 
-          <div class="col-md-4">
-            <div class="step-card text-center p-4 h-100">
-              <div class="step-number">2</div>
-              <div class="step-icon-wrapper mb-4 secondary">
+        <div class="timeline-item">
+          <div class="timeline-dot bg-blue">2</div>
+          <div class="timeline-content">
+            <div class="d-flex align-items-center mb-2">
+              <div class="mini-icon bg-blue-soft text-blue me-3">
                 <i class="bi bi-cpu-fill"></i>
               </div>
-              <h5 class="fw-700">AI Analysis</h5>
-              <p class="small text-muted mb-0">
-                Our hybrid IndoBERT & Gemini engine identifies sentiment patterns and extracts the most critical business issues.
-              </p>
+              <h5 class="fw-700 mb-0">Hybrid AI Processing</h5>
             </div>
+            <p class="text-muted mb-0">
+              Our advanced engine runs IndoBERT for precise sentiment detection and Gemini for strategic topic extraction, uncovering patterns you might have missed.
+            </p>
           </div>
+        </div>
 
-          <div class="col-md-4">
-            <div class="step-card text-center p-4 h-100">
-              <div class="step-number">3</div>
-              <div class="step-icon-wrapper mb-4 success">
+        <div class="timeline-item">
+          <div class="timeline-dot bg-emerald">3</div>
+          <div class="timeline-content border-0">
+            <div class="d-flex align-items-center mb-2">
+              <div class="mini-icon bg-emerald-soft text-emerald me-3">
                 <i class="bi bi-file-earmark-check-fill"></i>
               </div>
-              <h5 class="fw-700">Get Strategies</h5>
-              <p class="small text-muted mb-0">
-                Receive actionable recommendations and export them into professional PDF reports for your executive meetings.
-              </p>
+              <h5 class="fw-700 mb-0">Unlock Actionable Strategies</h5>
             </div>
+            <p class="text-muted mb-0">
+              Get clear, prioritized insights and automated recommendations. Export your findings into a professional PDF report ready for your executive stakeholders.
+            </p>
           </div>
         </div>
       </div>
-    `;
+    </div>
+  `;
   }
 }
 

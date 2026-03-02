@@ -366,67 +366,161 @@
   max-width: 100%;
 }
 
-/* --- Guide Section Styling --- */
-.guide-section {
-  background-color: #ffffff;
+/* --- Vertical Timeline Styling --- */
+.vertical-timeline {
+  max-width: 800px; /* Gue lebarin dikit biar gak terlalu kurus */
+  margin: 0 auto;
   position: relative;
+  padding-left: 20px;
+  padding-top: 40px; /* Kasih jarak dari judul */
 }
 
-.step-card {
-  background: #ffffff;
-  border-radius: 24px;
-  border: 1px solid #f1f5f9;
+.timeline-item {
   position: relative;
-  transition: all 0.3s ease;
+  padding-left: 60px; /* Tambah jarak dari bulatan angka ke konten */
+  padding-bottom: 100px; /* INI KUNCINYA: Jarak antar step kita bikin jauh lebih lega */
 }
-
-.step-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  border-color: #e2e8f0;
-}
-
-/* Step Number Badge */
-.step-number {
+/* Garis Vertikal Tengah */
+.timeline-item::before {
+  content: "";
   position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary-purple);
-  color: white;
+  left: 14px;
+  top: 40px; /* Mulai garis agak bawah dikit dari bulatan */
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    #e2e8f0,
+    #f1f5f9
+  ); /* Gue kasih gradient biar halus */
+}
+
+/* Hilangkan garis di item terakhir */
+.timeline-item:last-child::before {
+  display: none;
+}
+
+/* Bulatan Angka */
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
   font-weight: 800;
   font-size: 12px;
-  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon Wrapper Styling */
-.step-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  background: #f5f3ff; /* Lavender */
-  color: var(--primary-purple);
-  border-radius: 20px;
+.timeline-dot.bg-purple {
+  background: var(--primary-purple);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+.timeline-dot.bg-blue {
+  background: #3b82f6;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+.timeline-dot.bg-emerald {
+  background: #10b981;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Box Konten */
+.timeline-content {
+  background: #ffffff;
+  padding: 32px; /* Padding dalem box kita tambah biar gak sesak */
+  border-radius: 28px; /* Lebih rounded biar lebih modern */
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* Shadow super tipis */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.timeline-item:hover .timeline-content {
+  border-color: var(--primary-purple); /* Border berubah warna pas hover */
+  transform: translateX(15px); /* Geser lebih berasa */
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.06);
+}
+
+/* Mini Icon di dalam konten */
+.mini-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  font-size: 1.8rem;
+  font-size: 1.1rem;
 }
 
-.step-icon-wrapper.secondary {
-  background: #eff6ff; /* Soft Blue */
-  color: #3b82f6;
+.bg-purple-soft {
+  background: #f5f3ff;
+}
+.bg-blue-soft {
+  background: #eff6ff;
+}
+.bg-emerald-soft {
+  background: #ecfdf5;
 }
 
-.step-icon-wrapper.success {
-  background: #ecfdf5; /* Soft Emerald */
-  color: #10b981;
+.feature-graphic {
+  background: #ffffff;
+  height: 350px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #f1f5f9;
+  transition: all 0.5s ease;
+}
+
+.feature-graphic:hover {
+  transform: scale(1.02);
+}
+
+/* Floating Badge inside graphic */
+.floating-badge {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary-purple);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+}
+
+.floating-badge.success {
+  background: #10b981;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+}
+.floating-badge.info {
+  background: #3b82f6;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+}
+
+/* Glow Effects */
+.shadow-indigo {
+  box-shadow: 0 30px 60px -15px rgba(124, 58, 237, 0.08);
+}
+.shadow-emerald {
+  box-shadow: 0 30px 60px -15px rgba(16, 185, 129, 0.08);
+}
+.shadow-blue {
+  box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.08);
+}
+
+.lead-sm {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 @keyframes pulse-text {
@@ -457,19 +551,6 @@
 @media (max-width: 768px) {
   .priority-header {
     display: none !important;
-  }
-  .step-card::after {
-    content: "";
-    position: absolute;
-    top: 35%;
-    right: -20%;
-    width: 40%;
-    height: 2px;
-    border-top: 2px dashed #e2e8f0;
-    z-index: 0;
-  }
-  .col-md-4:last-child .step-card::after {
-    display: none;
   }
 }
 

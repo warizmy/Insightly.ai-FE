@@ -3,6 +3,7 @@ import UploadsSection from './sections/uploads';
 import ResultsSection from './sections/results';
 import Popup from '../../../utils/popUp';
 import GuideSection from './sections/guide';
+import FeatureSection from './sections/feature';
 
 class Dashboard {
   constructor() {
@@ -10,6 +11,7 @@ class Dashboard {
     this.uploads = new UploadsSection();
     this.results = new ResultsSection();
     this.guide = new GuideSection();
+    this.feature = new FeatureSection();
     this.popup = new Popup();
     this._isDirty = false;
   }
@@ -19,6 +21,7 @@ class Dashboard {
     container.append(
       this.hero.render(),
       this.guide.render(),
+      this.feature.render(),
       this.uploads.render(),
       this.results.render(),
     );
