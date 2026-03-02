@@ -19,9 +19,9 @@ class SentimentChart {
         ],
       },
       options: {
-        cutout: '75%', // Bikin lubang tengah makin gede buat naruh teks
+        cutout: '75%',
         plugins: {
-          legend: { display: false }, // Sembunyikan legend bawaan biar clean
+          legend: { display: false },
         },
       },
     });

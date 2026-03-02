@@ -365,6 +365,10 @@
   max-height: 100% !important;
 }
 
+#report-container canvas {
+  max-width: 100%;
+}
+
 @keyframes pulse-text {
   0% {
     opacity: 1;
@@ -374,6 +378,13 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media print {
+  .help-icon,
+  .btn-export {
+    display: none !important;
   }
 }
 

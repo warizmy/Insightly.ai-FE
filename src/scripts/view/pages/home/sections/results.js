@@ -1,9 +1,11 @@
+import { jsPDF } from 'jspdf';
 import SentimentChart from '../../../component/chart';
 
 class ResultsSection {
   constructor() {
     this._container = document.createElement('section');
     this._container.className = 'results-section py-5 d-none';
+    this._apiData = null;
   }
 
   render() {
@@ -11,6 +13,8 @@ class ResultsSection {
   }
 
   async update(apiData) {
+    this._apiData = apiData;
+
     // eslint-disable-next-line camelcase
     const { statistics, strategic_insights } = apiData.results;
     const { metadata } = apiData;
@@ -27,6 +31,252 @@ class ResultsSection {
       statistics.negative_count,
       statistics.neutral_count,
     ]);
+
+    this._bindExportButton();
+  }
+
+  _bindExportButton() {
+    const btn = this._container.querySelector('#btn-export');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => this._exportReport());
+  }
+
+  async _exportReport() {
+    if (!this._apiData) {
+      alert('No data available to export.');
+      return;
+    }
+    const btn = this._container.querySelector('#btn-export');
+    const originalText = btn.innerHTML;
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Generating...';
+
+    try {
+      // eslint-disable-next-line camelcase
+      const { statistics, strategic_insights } = this._apiData.results;
+      const { metadata } = this._apiData;
+      // eslint-disable-next-line camelcase
+      const safeInsights = strategic_insights || [];
+
+      // eslint-disable-next-line new-cap
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+      const pageW = doc.internal.pageSize.getWidth();
+      const margin = 15;
+      const contentW = pageW - margin * 2;
+      let y = 20;
+
+      // Header
+      doc.setFillColor(79, 70, 229); // indigo
+      doc.rect(0, 0, pageW, 30, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(18);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Sentiment Analysis Report', margin, 19);
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.text(
+        `Generated: ${new Date().toLocaleDateString('id-ID', { dateStyle: 'long' })}`,
+        pageW - margin,
+        19,
+        { align: 'right' },
+      );
+
+      y = 42;
+
+      // Source File
+      doc.setTextColor(100, 100, 100);
+      doc.setFontSize(9);
+      doc.text(`Source File: ${metadata.filename}`, margin, y);
+      y += 12;
+
+      // Summary Statistics
+      doc.setTextColor(30, 30, 30);
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Summary Statistics', margin, y);
+      y += 6;
+
+      doc.setDrawColor(220, 220, 220);
+      doc.line(margin, y, pageW - margin, y);
+      y += 8;
+
+      const statCards = [
+        {
+          label: 'Total Records',
+          value: metadata.total_records,
+          color: [79, 70, 229],
+        },
+        {
+          label: 'Positive Feedback',
+          value: statistics.positive_count,
+          color: [34, 197, 94],
+        },
+        {
+          label: 'Neutral Mentions',
+          value: statistics.neutral_count,
+          color: [14, 165, 233],
+        },
+        {
+          label: 'Negative Feedback',
+          value: statistics.negative_count,
+          color: [239, 68, 68],
+        },
+      ];
+
+      const cardW = (contentW - 9) / 4;
+      statCards.forEach((card, i) => {
+        const x = margin + i * (cardW + 3);
+        doc.setFillColor(...card.color);
+        doc.roundedRect(x, y, cardW, 22, 2, 2, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.text(card.value.toLocaleString(), x + cardW / 2, y + 11, {
+          align: 'center',
+        });
+        doc.setFontSize(7);
+        doc.setFont('helvetica', 'normal');
+        doc.text(card.label, x + cardW / 2, y + 18, { align: 'center' });
+      });
+
+      y += 32;
+
+      // Insights Header
+      doc.setTextColor(30, 30, 30);
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Priority Issues Detected', margin, y);
+      y += 4;
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(120, 120, 120);
+      doc.text(
+        `Based on ${statistics.negative_count.toLocaleString()} negative feedbacks (${((statistics.negative_count / metadata.total_records) * 100).toFixed(2)}% of total)`,
+        margin,
+        y + 4,
+      );
+      y += 12;
+
+      doc.setDrawColor(220, 220, 220);
+      doc.line(margin, y, pageW - margin, y);
+      y += 6;
+
+      // Insight Items
+      const urgencyColorMap = {
+        critical: [239, 68, 68],
+        high: [245, 158, 11],
+        medium: [14, 165, 233],
+        low: [34, 197, 94],
+      };
+
+      safeInsights.forEach((item, i) => {
+        if (y > 240) {
+          doc.addPage();
+          y = 20;
+        }
+
+        const urgencyKey = item.urgency.toLowerCase();
+        const [r, g, b] = urgencyColorMap[urgencyKey] || [150, 150, 150];
+
+        // Number + Topic
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(30, 30, 30);
+        const topicLines = doc.splitTextToSize(
+          `${i + 1}. ${item.topic}`,
+          contentW - 35,
+        );
+        doc.text(topicLines, margin, y);
+        y += (topicLines.length - 1) * 5;
+
+        // Urgency Tag
+        doc.setFillColor(r, g, b);
+        doc.roundedRect(pageW - margin - 28, y - 5, 28, 7, 1.5, 1.5, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(7);
+        doc.setFont('helvetica', 'bold');
+        doc.text(item.urgency.toUpperCase(), pageW - margin - 14, y - 0.5, {
+          align: 'center',
+        });
+
+        y += 6;
+
+        // Percentage Bar
+        doc.setFillColor(230, 230, 230);
+        doc.rect(margin, y, contentW * 0.5, 3, 'F');
+        doc.setFillColor(r, g, b);
+        doc.rect(
+          margin,
+          y,
+          contentW * 0.5 * (item.percentage_estimate / 100),
+          3,
+          'F',
+        );
+        doc.setTextColor(80, 80, 80);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.text(
+          `${item.percentage_estimate}% of complaints`,
+          margin + contentW * 0.5 + 3,
+          y + 2.5,
+        );
+
+        y += 8;
+
+        // Evidence
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'italic');
+        doc.setTextColor(100, 100, 100);
+        const evidenceLines = doc.splitTextToSize(
+          `Evidence: "${item.evidence}"`,
+          contentW,
+        );
+        doc.text(evidenceLines, margin, y);
+        y += evidenceLines.length * 4.5;
+
+        // Recommendation
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(50, 50, 50);
+        const recLines = doc.splitTextToSize(
+          `Recommendation: ${item.recommendation}`,
+          contentW,
+        );
+        doc.text(recLines, margin, y);
+        y += recLines.length * 4.5 + 5;
+
+        // Divider
+        doc.setDrawColor(240, 240, 240);
+        doc.line(margin, y, pageW - margin, y);
+        y += 6;
+      });
+
+      // Footer
+      const totalPages = doc.internal.getNumberOfPages();
+      for (let p = 1; p <= totalPages; p++) {
+        doc.setPage(p);
+        doc.setFontSize(8);
+        doc.setTextColor(160, 160, 160);
+        doc.text(
+          `Page ${p} of ${totalPages}`,
+          pageW / 2,
+          doc.internal.pageSize.getHeight() - 8,
+          { align: 'center' },
+        );
+      }
+
+      // Save
+      const filename = `sentiment-report-${metadata.filename.replace(/\.[^.]+$/, '')}-${Date.now()}.pdf`;
+      doc.save(filename);
+    } catch (err) {
+      console.error('Export failed:', err);
+      alert('Failed to generate report. Please try again.');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
   }
 
   _getTemplate(stats, meta, insights) {
@@ -65,9 +315,14 @@ class ResultsSection {
         </div>
       </div>
 
-      <div class="d-flex flex-column align-items-start mb-4 gap-1">
-        <h4 class="fw-800 mb-0">Priority Issues Detected</h4>
-        <span class="text-muted" style="font-size: 14px;">Analysis based on ${stats.negative_count.toLocaleString()} negative feedbacks detected (${((stats.negative_count / meta.total_records) * 100).toFixed(2)}% of total records)</span>
+      <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-2">
+        <div class="d-flex flex-column gap-2">
+          <h4 class="fw-800 mb-0">Priority Issues Detected</h4>
+          <span class="text-muted" style="font-size: 14px;">Analysis based on ${stats.negative_count.toLocaleString()} negative feedbacks detected (${((stats.negative_count / meta.total_records) * 100).toFixed(2)}% of total records)</span>
+        </div>
+        <button id="btn-export" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
+          <i class="bi bi-file-earmark-pdf me-2"></i> Export Report
+        </button>
       </div>
       
       <div class="modern-accordion">
@@ -142,7 +397,8 @@ class ResultsSection {
         <div class="d-flex align-items-center gap-3 ms-auto flex-shrink-0" style="width: 180px;">
           <div class="progress flex-grow-1" style="height: 6px;">
             <div class="progress-bar bg-${impactColor}" 
-                 style="width: ${item.percentage_estimate}%"></div>
+                style="width: ${item.percentage_estimate}%">
+            </div>
           </div>
           <span class="fw-600 small text-dark" style="width: 45px;">${item.percentage_estimate}%</span>
         </div>
