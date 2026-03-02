@@ -21,8 +21,8 @@ class Popup {
             </div>
             <p class="popup-message mb-4"></p>
             <div class="popup-actions d-flex gap-2 justify-content-center">
-              <button class="btn btn-light btn-cancel rounded-pill px-4">Batal</button>
-              <button class="btn btn-primary btn-confirm rounded-pill px-4 fw-bold">Oke</button>
+              <button class="btn btn-light btn-cancel rounded-pill px-4">No</button>
+              <button class="btn btn-primary btn-confirm rounded-pill px-4 fw-bold">Yes</button>
             </div>
           </div>
         </div>

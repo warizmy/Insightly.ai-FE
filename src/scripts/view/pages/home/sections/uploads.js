@@ -54,7 +54,7 @@ class UploadsSection {
 
     const ext = file.name.split('.').pop().toLowerCase();
     if (!['csv', 'xlsx', 'xls'].includes(ext)) {
-      this._popup.show('Format file tidak didukung! Gunakan CSV atau Excel.');
+      this._popup.show('Formats not supported. Please upload a CSV or Excel file.');
       this._updateStatus('idle');
       return;
     }
@@ -126,22 +126,6 @@ class UploadsSection {
       statusText.classList.remove('fw-bold', 'text-primary');
     }
   }
-
-  // _setLoading(isLoading) {
-  //   this._isUploading = isLoading;
-  //   const btn = this._container.querySelector('#btn-browse');
-  //   const statusText = this._container.querySelector('#upload-status-text');
-
-  //   if (isLoading) {
-  //     btn.disabled = true;
-  //     btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
-  //     statusText.innerText = 'Models are analyzing your data. This might take a minute...';
-  //   } else {
-  //     btn.disabled = false;
-  //     btn.innerHTML = 'Browse Files';
-  //     statusText.innerText = 'Drag & drop your CSV or Excel here, or click to browse.';
-  //   }
-  // }
 
   _getTemplate() {
     return `
