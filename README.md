@@ -21,7 +21,7 @@ The application is built as a Single Page Application (SPA) using a modular Java
 
 ## Directory Structure
 
-- `/src/view/pages`: Contains main page modules (Dashboard, Analyze, APIDocs).
+- `/src/view/pages`: Contains main page modules (Home, Analyze, APIDocs).
 - `/src/view/pages/sections`: Modular components for landing page sections (Hero, Guide, Features).
 - `/src/styles`: Categorized CSS modules (main.css, home.css, analyze.css, docs.css).
 - `/src/utils`: Utility classes for API communication and UI notifications.
