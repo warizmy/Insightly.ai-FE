@@ -1,104 +1,68 @@
-# Indonesian Food Classification Web Application (Frontend)
+# Insightly.ai
 
-This repository contains the frontend implementation of an Indonesian food classification web application. The application allows users to upload images of Indonesian food, sends them to a backend API for classification, and displays AI-generated recipes based on the prediction results.
+Insightly.ai is a specialized customer feedback analysis platform designed to transform raw qualitative data into actionable business strategies. By leveraging a dual-engine AI approach—IndoBERT for precise sentiment detection and Google Gemini for strategic reasoning—the application provides deep contextual understanding of customer voices.
 
-The frontend is built using Vanilla JavaScript with a modular structure and is designed to be lightweight, responsive, and easy to integrate with different backend environments.
+## Core Features
 
----
+- **Hybrid AI Engine**: Utilizes IndoBERT for high-accuracy Indonesian sentiment analysis and Gemini AI for topic extraction and recommendation generation.
+- **Batch Analysis**: Supports bulk processing of datasets via CSV and Excel file uploads.
+- **Strategic Reporting**: Generates comprehensive PDF reports featuring sentiment distribution and prioritized action plans.
+- **API Integration**: Offers a dedicated API documentation page for seamless integration with third-party applications.
+- **Live Sandbox**: Allows real-time testing of the sentiment engine directly from the landing page.
 
-## Features
+## Technical Architecture
 
-- Integration with a RESTful backend API
-- Display of classification results and confidence score
-- AI-generated recipe rendering
-- Fully responsive user interface
-- Progressive Web App (PWA) support
+The application is built as a Single Page Application (SPA) using a modular JavaScript architecture to ensure maintainability and performance.
 
----
+- **Frontend**: Vanilla JavaScript (ES6+), Bootstrap 5, Custom CSS Modules.
+- **State Management**: Router-based page transitions and state persistence during analysis sessions.
+- **Reporting**: jsPDF for dynamic document generation.
+- **Visualization**: Chart.js for data distribution mapping.
 
-## Tech Stack
+## Directory Structure
 
-Frontend:
-- Vanilla JavaScript (ES6+)
-- Bootstrap 5
+- `/src/view/pages`: Contains main page modules (Dashboard, Analyze, APIDocs).
+- `/src/view/pages/sections`: Modular components for landing page sections (Hero, Guide, Features).
+- `/src/styles`: Categorized CSS modules (main.css, home.css, analyze.css, docs.css).
+- `/src/utils`: Utility classes for API communication and UI notifications.
 
-Backend (separate repository):
-- Flask (Python)
-- CNN-based food classification model (MobileNetV2)
-- Large Language Model for recipe generation
-- You can access the Backend repository [here](https://github.com/warizmy/indo-food-classification-BE).
+## Getting Started
 
----
+### Prerequisites
 
-## Application Flow
+- Modern Web Browser (Chrome, Firefox, Safari, Edge).
+- Node.js environment for dependency management.
 
-1. User uploads an image of Indonesian food.
-2. The image is sent to the backend API.
-3. The backend performs food classification using a CNN model.
-4. The predicted food name is passed to an LLM to generate a recipe.
-5. The frontend renders:
-   - Food name
-   - Generated recipe content
+### Installation
 
----
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/insightly-ai.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file and configure your API base URL:
+   ```text
+   BASE_URL=your_api_here
+   ```
+4. Run the development server:
+   ```bash
+   npm run start-dev
+   ```
 
-## Setup and Installation
+## API Documentation
 
-### Clone the Repository
+The API reference is available at `/docs` within the application. Key endpoints include:
 
-```bash
-git clone https://github.com/yourusername/food-classification-frontend.git
-cd food-classification-frontend
-```
+- `POST /predict`: Real-time single-text sentiment analysis.
+- `POST /analyze-upload`: Multipart/form-data endpoint for batch file processing.
 
-### Configure API Endpoint
+## Deployment
 
-Update the backend base URL inside the API utility file:
+This project is configured for deployment on Netlify. Ensure the `dist` file is present in the publish directory.
 
-```javascript
-// src/utils/api.js
-const BASE_URL = 'http://localhost:5000';
-```
+## License
 
-Change the URL according to your backend deployment environment.
-
----
-
-## Running the Application
-
-This project is a static frontend application.
-
-You can run it using:
-- Live Server (VS Code extension)
-- Any static file server
-- Static hosting platforms such as GitHub Pages, Netlify, or Vercel
-
----
-
-## Progressive Web App (PWA)
-
-This application includes PWA support, enabling:
-- Offline access for cached assets
-- Installable web application experience
-- Responsive behavior across devices
-
-Ensure that `manifest.json` and `service-worker.js` are properly registered.
-
----
-
-## Design Considerations
-
-- Built with Vanilla JavaScript to emphasize core JavaScript fundamentals
-- Modular file structure for maintainability
-- Separation of concerns between UI logic, API handling, and utilities
-- Easily extendable to modern frameworks such as React or Next.js
-
----
-
-## Future Improvements
-
-- Migration to React or Next.js
-- User authentication and profile management
-- Backend-based history persistence
-- Image storage using cloud services
-- Multi-language support
+This project is developed for educational and professional purposes at Universitas Bumigora. All rights reserved.
