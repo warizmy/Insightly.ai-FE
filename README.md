@@ -54,7 +54,7 @@ The application is built as a Single Page Application (SPA) using a modular Java
 
 ## API Documentation
 
-The API reference is available at `/docs` within the application. Key endpoints include:
+The API reference is available at `/apidocs` within the application. Key endpoints include:
 
 - `POST /predict`: Real-time single-text sentiment analysis.
 - `POST /analyze-upload`: Multipart/form-data endpoint for batch file processing.
@@ -62,7 +62,3 @@ The API reference is available at `/docs` within the application. Key endpoints 
 ## Deployment
 
 This project is configured for deployment on Netlify. Ensure the `dist` file is present in the publish directory.
-
-## License
-
-This project is developed for educational and professional purposes at Universitas Bumigora. All rights reserved.
