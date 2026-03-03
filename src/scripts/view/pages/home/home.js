@@ -32,6 +32,7 @@ class Home {
         window.location.hash = '/analyze';
       });
     }
+    this.hero._initializeEvent();
   }
 }
 
