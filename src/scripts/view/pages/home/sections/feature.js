@@ -20,7 +20,7 @@ class FeatureSection {
         </div>
         <div class="row align-items-center mb-5 pb-4">
           <div class="col-lg-6 mb-4 mb-lg-0">
-            <div class="feature-graphic shadow-indigo">
+            <div class="feature-graphic shadow-blue">
               <i class="bi bi-cpu text-primary display-1"></i>
               <div class="floating-badge">IndoBERT + Gemini</div>
             </div>
