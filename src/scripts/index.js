@@ -23,10 +23,10 @@ window.addEventListener('load', async () => {
 
   progressBar.finish();
 
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker
-  //     .register('/sw.js');
-  // }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js');
+  }
 });
 
 window.addEventListener('hashchange', async () => {
