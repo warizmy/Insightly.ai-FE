@@ -7,9 +7,44 @@
 @import "docs.css";
 
 :root {
+  /* Light Mode (Default) */
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --card-bg: #ffffff;
+  --border-color: #f1f5f9;
   --primary-blue: #3b82f6;
   --primary-purple: #8b5cf6;
-  --bg-light: #f8fafc;
+  --muted-text: #64748b;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Palette */
+  --bg-color: #0f172a; /* Slate 900 */
+  --text-color: #f1f5f9;
+  --card-bg: #1e293b; /* Slate 800 */
+  --border-color: #334155;
+  --muted-text: #94a3b8;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.bento-card,
+.timeline-content,
+.modern-accordion,
+.docs-sidebar {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color);
+}
+
+.text-muted {
+  color: var(--muted-text) !important;
 }
 
 /* --- TYPOGRAPHY HELPERS --- */
@@ -101,11 +136,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-}
-
-body {
-  background-color: var(--bg-light);
-  color: #1e293b;
 }
 
 .main-content-wrapper {
