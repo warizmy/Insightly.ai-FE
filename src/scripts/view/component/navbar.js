@@ -1,3 +1,5 @@
+import ThemeManager from '../../utils/themeManager';
+
 class Navbar {
   render() {
     const header = document.createElement('header');
@@ -28,6 +30,9 @@ class Navbar {
           </ul>
         </div>
       </div>
+      <button id="theme-toggle" class="btn btn-link nav-link px-4 shadow-none">
+        <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
+      </button>
     </nav>`;
     return header;
   }
@@ -38,8 +43,14 @@ class Navbar {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    const toggleBtn = document.querySelector('#theme-toggle');
+    const icon = document.querySelector('#theme-icon');
+
     document.addEventListener('click', (event) => {
-      if (!navbar.contains(event.target) && navbarCollapse.classList.contains('active')) {
+      if (
+        !navbar.contains(event.target)
+        && navbarCollapse.classList.contains('active')
+      ) {
         navbarCollapse.classList.remove('active');
       }
     });
@@ -58,6 +69,20 @@ class Navbar {
     window.addEventListener('hashchange', () => {
       navbarCollapse.classList.remove('active');
     });
+
+    const updateIcon = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      icon.className = isDark
+        ? 'bi bi-sun-fill text-warning'
+        : 'bi bi-moon-stars-fill';
+    };
+
+    toggleBtn.addEventListener('click', () => {
+      ThemeManager.toggle();
+      updateIcon();
+    });
+
+    updateIcon();
   }
 
   initialize() {
