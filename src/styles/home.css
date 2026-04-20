@@ -277,6 +277,14 @@ feature-graphic.shadow-indigo:hover {
 /* --- FAQ SECTION STYLING --- */
 .faq-item {
   border-color: #f1f5f9 !important;
+  transition: all 0.3s ease;
+}
+
+.faq-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  width: 100%;
+  opacity: 0.6;
 }
 
 .faq-header {
@@ -288,27 +296,46 @@ feature-graphic.shadow-indigo:hover {
 }
 
 .faq-icon-wrapper {
-  width: 32px;
-  height: 32px;
-  background: #f5f3ff;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #f5f3ff; /* Light mode default */
   color: var(--primary-purple);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Animasi Icon Plus jadi Silang (Rotasi) */
 .faq-header:not(.collapsed) .faq-icon-wrapper {
-  background: var(--primary-purple);
-  color: white;
-  transform: rotate(135deg); /* Berubah jadi 'x' */
+  background-color: var(--primary-purple);
+  color: #fff;
+  transform: rotate(135deg);
 }
 
 .faq-header:not(.collapsed) h6 {
   color: var(--primary-purple) !important;
+}
+
+.faq-header:hover h6 {
+  color: var(--primary-purple);
+}
+
+[data-theme="dark"] .faq-icon-wrapper {
+  background-color: rgba(139, 92, 246, 0.1); /* Soft purple transparan */
+  color: #a78bfa;
+}
+
+[data-theme="dark"] .faq-header:not(.collapsed) .faq-icon-wrapper {
+  background-color: var(--primary-purple);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+/* Bikin Teks Pertanyaan Lebih Menonjol di Dark Mode */
+[data-theme="dark"] .faq-header h6 {
+  color: #f1f5f9; /* Putih sedikit abu biar gak terlalu silau */
 }
 
 /* Custom Collapse Animation */
