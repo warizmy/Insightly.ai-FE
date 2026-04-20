@@ -215,6 +215,36 @@ feature-graphic.shadow-indigo:hover {
   transition: all 0.3s ease;
 }
 
+/* Purple Icon */
+.icon-box-purple {
+  background-color: #f5f3ff; /* Light mode */
+  color: var(--primary-purple);
+}
+[data-theme="dark"] .icon-box-purple {
+  background-color: rgba(139, 92, 246, 0.15); /* Soft purple transparan */
+  color: #a78bfa;
+}
+
+/* Blue Icon */
+.icon-box-blue {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+[data-theme="dark"] .icon-box-blue {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+/* Emerald Icon */
+.icon-box-emerald {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+[data-theme="dark"] .icon-box-emerald {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
 /* --- FAQ SECTION STYLING --- */
 .faq-item {
   border-color: #f1f5f9 !important;
