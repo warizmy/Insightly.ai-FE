@@ -152,17 +152,32 @@
 
 /* --- VERTICAL FEATURE SHOWCASE --- */
 .feature-graphic {
-  background: #ffffff;
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color);
   height: 350px;
   border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 1px solid #f1f5f9;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   overflow: visible;
+}
+
+[data-theme="dark"] .shadow-blue {
+  box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15) !important;
+}
+
+[data-theme="dark"] .shadow-emerald {
+  box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Hover Effect di Dark Mode agar lebih 'glow' */
+[data-theme="dark"] .feature-graphic:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--primary-purple);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
 }
 
 .feature-graphic:hover {
@@ -191,6 +206,20 @@ feature-graphic.shadow-indigo:hover {
   font-size: 0.8rem;
   transition: all 0.3s ease;
   z-index: 2;
+}
+
+[data-theme="dark"] .floating-badge.success {
+  background: #059669; /* Emerald yang lebih deep untuk dark mode */
+}
+
+[data-theme="dark"] .floating-badge.info {
+  background: #0284c7; /* Blue yang lebih deep */
+}
+
+/* Pastikan Icon di dalam Graphic tetap kontras */
+[data-theme="dark"] .feature-graphic i {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.05));
+  /* Memberikan sedikit glow putih di belakang icon agar pop out */
 }
 
 .feature-graphic:hover .floating-badge {
