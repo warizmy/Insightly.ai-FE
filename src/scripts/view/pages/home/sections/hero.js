@@ -23,12 +23,12 @@ class HeroSection {
                Powered by IndoBERT for precision and Gemini AI for strategic intelligence.
           </p>
           
-          <div class="sandbox-container mx-auto mt-4 p-4 rounded-5 bg-white shadow-soft" style="max-width: 40em; width: 100%;">
+          <div class="sandbox-container mx-auto mt-4 p-4 rounded-5 sandbox-card shadow-soft" style="max-width: 40em; width: 100%;">
                <div class="input-group mb-0">
                     <input
                          type="text"
                          id="sandbox-input"
-                         class="form-control border-0 bg-body-secondary p-3"
+                         class="form-control border-0 sandbox-input p-3"
                          placeholder="Type your customer feedback here..."
                          style="box-shadow: none !important; border-radius: 12px 0 0 12px;"
                     />
@@ -38,7 +38,7 @@ class HeroSection {
                </div>
                
                <div id="sandbox-result" class="text-start mt-3 d-none animate-fade-up">
-                    <div class="d-flex align-items-center justify-content-between p-3 rounded-4 bg-light border">
+                    <div class="d-flex align-items-center justify-content-between p-3 rounded-4 sandbox-result-box border">
                          <div id="sentiment-badge-container">
                               </div>
                          <div class="text-end">
