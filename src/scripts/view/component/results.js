@@ -389,7 +389,7 @@ class ResultsSection {
         </div>
 
         <div class="flex-grow-1 px-md-3">
-          <span class="fw-600 text-dark d-block line-clamp-2">
+          <span class="fw-600 d-block line-clamp-2">
             ${item.topic}
           </span>
         </div>
@@ -400,7 +400,7 @@ class ResultsSection {
                 style="width: ${item.percentage_estimate}%">
             </div>
           </div>
-          <span class="fw-600 small text-dark" style="width: 45px;">${item.percentage_estimate}%</span>
+          <span class="fw-600 small" style="width: 45px;">${item.percentage_estimate}%</span>
         </div>
 
         <div class="ms-3 flex-shrink-0">
