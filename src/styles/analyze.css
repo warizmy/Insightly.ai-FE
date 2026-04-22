@@ -9,6 +9,38 @@
   border-color: var(--primary-blue);
   background-color: #f1f5f9;
 }
+.upload-card {
+  background-color: var(--card-bg) !important;
+  border: 2px dashed var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Warna Icon di Upload Zone */
+.icon-drop-zone {
+  color: var(--primary-purple); 
+}
+
+/* State pas file di-drag ke atas card */
+.drag-active {
+  background-color: rgba(139, 92, 246, 0.05) !important; /* Soft purple hint */
+  border-style: solid;
+  border-color: var(--primary-purple) !important;
+  transform: scale(1.02);
+}
+
+/* Analyzing State Text */
+.text-primary {
+  color: var(--primary-blue) !important;
+}
+
+[data-theme="dark"] .text-primary {
+  color: #60a5fa !important; /* Biru yang lebih terang untuk dark mode */
+}
+
+/* Border Adaptif untuk bagian bawah card */
+.border-adaptive {
+  border-color: var(--border-color) !important;
+}
 
 /* --- 2. BENTO & STAT CARDS --- */
 .bento-card {
@@ -220,6 +252,65 @@ span.label-caps.custom-tooltip {
 .help-icon {
   font-size: 14px;
   color: #94a3b8;
+}
+
+/* --- ANALYZE ADAPTIVE CLASSES --- */
+
+/* Reusable Adaptive Backgrounds */
+.bg-soft-adaptive {
+  background-color: #f8fafc; /* Light Mode */
+  transition: all 0.3s ease;
+}
+
+.bg-card-adaptive {
+  background-color: #ffffff; /* Light Mode */
+  transition: all 0.3s ease;
+}
+
+.border-adaptive {
+  border-color: #e2e8f0 !important;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme="dark"] .bg-soft-adaptive {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+[data-theme="dark"] .bg-card-adaptive {
+  background-color: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .border-adaptive {
+  border-color: var(--border-color) !important;
+}
+
+/* --- ACCORDION DARK MODE --- */
+[data-theme="dark"] .modern-accordion {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .priority-header {
+  background-color: rgba(139, 92, 246, 0.05); /* Soft Purple Hint */
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .priority-row {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .priority-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Quote and Evidence */
+[data-theme="dark"] .evidence-quote {
+  color: var(--muted-text);
+}
+
+/* Chart Center Text */
+[data-theme="dark"] .chart-overlay h2 {
+  color: #fff;
 }
 
 /* --- RESPONSIVE OPTIMIZATION --- */

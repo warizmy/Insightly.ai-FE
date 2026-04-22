@@ -287,7 +287,7 @@ class ResultsSection {
       <div class="row g-4 mb-5">
         <div class="col-lg-5">
           <div class="bento-card p-4 h-100 shadow-soft">
-            <h5 class="fw-700 mb-4 text-dark">Sentiment Distribution</h5>
+            <h5 class="fw-700 mb-4">Sentiment Distribution</h5>
             <div class="chart-wrapper">
               <canvas id="sentimentChart"></canvas>
               <div class="chart-overlay">
@@ -295,10 +295,10 @@ class ResultsSection {
                 <span class="label-caps" style="font-size: 8px;">Total Records</span>
               </div>
             </div>
-            <div class="text-center mt-4 p-3 bg-light rounded-4">
+            <div class="text-center mt-4 p-3 bg-soft-adaptive rounded-4">
               <p class="small text-muted mb-0">
                 <i class="bi bi-file-earmark-bar-graph me-1"></i> Source File: 
-                  <span class="fw-700 text-dark text-truncate d-inline-block align-middle" style="max-width: 200px;">
+                  <span class="fw-700 text-truncate d-inline-block align-middle" style="max-width: 200px;">
                     ${meta.filename}
                   </span>
               </p>
@@ -410,21 +410,21 @@ class ResultsSection {
 
       <div id="insight-${index}" class="collapse" data-bs-parent="#insightAccordion">
         <div class="px-4 pb-4">
-          <div class="detail-box p-4 rounded-4 shadow-sm bg-light">
+          <div class="detail-box p-4 rounded-4 shadow-sm bg-soft-adaptive">
             <div class="row g-4">
-              <div class="col-md-5">
-                <label class="label-caps mb-2">Evidence from Feedback</label>
-                <div class="evidence-quote">
-                  <i class="bi bi-quote opacity-25 h3 mb-0 me-2"></i>
-                  <span>${item.evidence}</span>
+                <div class="col-md-5">
+                  <label class="label-caps mb-2 opacity-75">Evidence from Feedback</label>
+                    <div class="evidence-quote">
+                        <i class="bi bi-quote opacity-25 h3 mb-0 me-2"></i>
+                        <span>${item.evidence}</span>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-7">
-                <label class="label-caps mb-2 text-purple">Action Plan</label>
-                <div class="p-3 bg-white rounded-3 border">
-                  <p class="small mb-0 line-height-relaxed">${item.recommendation}</p>
+                <div class="col-md-7">
+                    <label class="label-caps mb-2 text-purple">Action Plan</label>
+                    <div class="p-3 bg-card-adaptive rounded-3 border border-adaptive">
+                        <p class="small mb-0 line-height-relaxed">${item.recommendation}</p>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>

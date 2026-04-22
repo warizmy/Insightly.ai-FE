@@ -4,7 +4,7 @@ import Popup from '../../utils/popUp';
 class UploadsSection {
   constructor() {
     this._container = document.createElement('section');
-    this._container.className = 'upload-section py-5 bg-light';
+    this._container.className = 'upload-section py-5';
     this._container.id = 'upload-zone';
     this._isUploading = false;
     this._popup = new Popup();
@@ -54,7 +54,9 @@ class UploadsSection {
 
     const ext = file.name.split('.').pop().toLowerCase();
     if (!['csv', 'xlsx', 'xls'].includes(ext)) {
-      this._popup.show('Formats not supported. Please upload a CSV or Excel file.');
+      this._popup.show(
+        'Formats not supported. Please upload a CSV or Excel file.',
+      );
       this._updateStatus('idle');
       return;
     }
@@ -129,32 +131,29 @@ class UploadsSection {
 
   _getTemplate() {
     return `
-      <div class="container text-center mb-4">
-        <h1 class="fw-bold mb-2">From Data to <span class="main-gradient-text">Strategy</span></h1>
-        <p class="text-muted">Upload your dataset to generate strategic business insights instantly.</p>
-      </div>
-      <div class="container">
-        <div class="upload-card mx-auto p-5 text-center bg-white rounded-5 border-dashed shadow-soft" style="max-width: 800px;">
-          <div class="mb-4">
-            <i class="bi bi-cloud-arrow-up-fill display-2 text-primary opacity-25"></i>
-          </div>
-          <h4 class="fw-bold">Advanced Batch Analysis</h4>
-          <p id="upload-status-text" class="text-muted">Drag & drop your CSV or Excel here, or click to browse.</p>
-          <input type="file" id="file-upload" accept=".csv, .xlsx, .xls" hidden>
-          <div class="d-flex flex-column align-items-center gap-3">
-            <button id="btn-browse" class="btn btn-lg btn-purple text-white px-5 rounded-pill shadow-sm">
-              Browse Files
-            </button>
-            <a href="#" class="text-decoration-none small text-primary fw-bold d-none">
-              <i class="bi bi-file-earmark-arrow-down me-1"></i>Download Sample CSV
-            </a>
-          </div>
-          <div class="mt-4 pt-3 border-top">
-            <small class="text-muted">Max 2,000 rows • CSV, XLSX, XLS supported</small>
-          </div>
+    <div class="container text-center mb-4">
+      <h1 class="fw-bold mb-2">From Data to <span class="main-gradient-text">Strategy</span></h1>
+      <p class="text-muted">Upload your dataset to generate strategic business insights instantly.</p>
+    </div>
+    <div class="container">
+      <div class="upload-card mx-auto p-5 text-center bg-card-adaptive rounded-5 border-dashed shadow-soft" style="max-width: 800px;">
+        <div class="mb-4">
+          <i class="bi bi-cloud-arrow-up-fill display-2 icon-drop-zone opacity-25"></i>
+        </div>
+        <h4 class="fw-bold">Advanced Batch Analysis</h4>
+        <p id="upload-status-text" class="text-muted">Drag & drop your CSV or Excel here, or click to browse.</p>
+        <input type="file" id="file-upload" accept=".csv, .xlsx, .xls" hidden>
+        <div class="d-flex flex-column align-items-center gap-3">
+          <button id="btn-browse" class="btn btn-lg btn-purple text-white px-5 rounded-pill shadow-sm">
+            Browse Files
+          </button>
+        </div>
+        <div class="mt-4 pt-3 border-top border-adaptive">
+          <small class="text-muted">Max 2,000 rows • CSV, XLSX, XLS supported</small>
         </div>
       </div>
-    `;
+    </div>
+  `;
   }
 }
 
