@@ -1,5 +1,6 @@
 import routes from './routes/routes';
 import UrlParser from './routes/urlParser';
+import ThemeManager from './utils/themeManager';
 import Footer from './view/component/footer';
 import Navbar from './view/component/navbar';
 
@@ -10,6 +11,7 @@ class Main {
     this._mainContentWrapper = mainContentWrapper;
     this._activePage = null;
 
+    ThemeManager.init();
     this.InitialAppShell();
   }
 
