@@ -8,50 +8,45 @@ class HeroSection {
 
   render() {
     this._container.innerHTML = `
-     <div class="container text-center d-flex flex-column align-items-center justify-content-center">
-          <div class="mt-4">
-               <button onclick="window.location.hash = '/analyze'" class="btn btn-primary btn-lg rounded-pill px-3 py-1 fs-6 shadow-soft">
-                    Start Analyzing Now <i class="bi bi-rocket-takeoff ms-2"></i>
-               </button>
+    <div class="container text-center d-flex flex-column align-items-center justify-content-center">
+      <div class="mt-4">
+        <button onclick="window.location.hash = '/analyze'" class="btn btn-primary btn-lg rounded-pill px-3 py-1 fs-6 shadow-soft">
+          Start Analyzing Now <i class="bi bi-rocket-takeoff ms-2"></i>
+        </button>
+      </div>
+      <h1 class="display-4 fw-bold mt-3">
+        Turn Customer Noise into 
+        <br>
+        <span class="main-gradient-text">Strategic Growth</span>
+      </h1>
+      <p class="lead text-muted mx-auto py-2" style="max-width: 600px; font-weight: 400">
+        Powered by IndoBERT for precision and Gemini AI for strategic intelligence.
+      </p>    
+      <div class="sandbox-container mx-auto mt-4 p-4 rounded-5 sandbox-card shadow-soft" style="max-width: 40em; width: 100%;">
+        <div class="input-group mb-0">
+          <input
+            type="text"
+            id="sandbox-input"
+            class="form-control border-0 sandbox-input p-3"
+            placeholder="Type your customer feedback here..."
+            style="box-shadow: none !important; border-radius: 12px 0 0 12px;"/>
+          <button class="btn btn-primary px-4 fw-bold" id="btn-analyze" style="border-radius: 0 12px 12px 0;">
+              Analyze
+          </button>
+        </div>
+        <div id="sandbox-result" class="text-start mt-3 d-none animate-fade-up">
+          <div class="d-flex align-items-center justify-content-between p-3 rounded-4 sandbox-result-box border">
+            <div id="sentiment-badge-container"></div>
+            <div class="text-end">
+              <span id="confidence-text" class="text-muted small fw-600"></span>
+            </div>
           </div>
-          <h1 class="display-4 fw-bold mt-3">
-               Turn Customer Noise into 
-               <br>
-               <span class="main-gradient-text">Strategic Growth</span>
-          </h1>
-          <p class="lead text-muted mx-auto py-2" style="max-width: 600px; font-weight: 400">
-               Powered by IndoBERT for precision and Gemini AI for strategic intelligence.
-          </p>
-          
-          <div class="sandbox-container mx-auto mt-4 p-4 rounded-5 sandbox-card shadow-soft" style="max-width: 40em; width: 100%;">
-               <div class="input-group mb-0">
-                    <input
-                         type="text"
-                         id="sandbox-input"
-                         class="form-control border-0 sandbox-input p-3"
-                         placeholder="Type your customer feedback here..."
-                         style="box-shadow: none !important; border-radius: 12px 0 0 12px;"
-                    />
-                    <button class="btn btn-primary px-4 fw-bold" id="btn-analyze" style="border-radius: 0 12px 12px 0;">
-                         Analyze
-                    </button>
-               </div>
-               
-               <div id="sandbox-result" class="text-start mt-3 d-none animate-fade-up">
-                    <div class="d-flex align-items-center justify-content-between p-3 rounded-4 sandbox-result-box border">
-                         <div id="sentiment-badge-container">
-                              </div>
-                         <div class="text-end">
-                              <span id="confidence-text" class="text-muted small fw-600"></span>
-                         </div>
-                    </div>
-               </div>
-
-               <div id="sandbox-error" class="text-danger small mt-2 d-none">
-                    <i class="bi bi-exclamation-triangle-fill me-1"></i> Gagal menganalisis teks.
-               </div>
-          </div>
-     </div>`;
+        </div>
+        <div id="sandbox-error" class="text-danger small mt-2 d-none">
+          <i class="bi bi-exclamation-triangle-fill me-1"></i> Gagal menganalisis teks.
+        </div>
+      </div>
+    </div>`;
     return this._container;
   }
 

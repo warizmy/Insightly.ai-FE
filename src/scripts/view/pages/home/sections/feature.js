@@ -33,7 +33,6 @@ class FeatureSection {
             </p>
           </div>
         </div>
-
         <div class="row align-items-center mb-5 pb-4 flex-lg-row-reverse">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="feature-graphic shadow-emerald">
@@ -49,7 +48,6 @@ class FeatureSection {
             </p>
           </div>
         </div>
-
         <div class="row align-items-center">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="feature-graphic shadow-blue">
@@ -65,8 +63,7 @@ class FeatureSection {
             </p>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
   }
 }
 

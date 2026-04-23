@@ -305,7 +305,6 @@ class ResultsSection {
             </div>
           </div>
         </div>
-
         <div class="col-lg-7">
           <div class="row g-4 h-100">
             ${this._renderStatCard('Positive Feedback', stats.positive_count, 'success', 'bi-emoji-smile-fill')}
@@ -314,7 +313,6 @@ class ResultsSection {
           </div>
         </div>
       </div>
-
       <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-2">
         <div class="d-flex flex-column gap-2">
           <h4 class="fw-800 mb-0">Priority Issues Detected</h4>
@@ -324,7 +322,6 @@ class ResultsSection {
           <i class="bi bi-file-earmark-pdf me-2"></i> Export Report
         </button>
       </div>
-      
       <div class="modern-accordion">
         <div class="priority-header d-none d-md-flex align-items-center p-4">
           <div style="width: 120px;" class="flex-shrink-0">
@@ -344,7 +341,6 @@ class ResultsSection {
           </div>
           <div style="width: 20px;" class="ms-3 flex-shrink-0"></div>
         </div>
-
         <div id="insightAccordion">
           ${
   safeInsights.length > 0
@@ -360,18 +356,18 @@ class ResultsSection {
 
   _renderStatCard(label, count, color, icon) {
     return `
-      <div class="col-md-4 col-sm-6">
-        <div class="bento-card p-4 shadow-soft h-100 border-bottom-custom-${color}">
-          <div class="d-flex align-items-center mb-3">
-            <div class="icon-shape bg-${color}-soft text-${color} rounded-circle me-3">
-              <i class="bi ${icon}"></i>
-            </div>
-            <span class="label-caps text-muted" style="font-size: 9px;">${label}</span>
+    <div class="col-md-4 col-sm-6">
+      <div class="bento-card p-4 shadow-soft h-100 border-bottom-custom-${color}">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-shape bg-${color}-soft text-${color} rounded-circle me-3">
+            <i class="bi ${icon}"></i>
           </div>
-          <h2 class="fw-800 mb-1">${count.toLocaleString()}</h2>
-          <p class="text-muted small mb-0">Identified entries</p>
+          <span class="label-caps text-muted" style="font-size: 9px;">${label}</span>
         </div>
-      </div>`;
+        <h2 class="fw-800 mb-1">${count.toLocaleString()}</h2>
+        <p class="text-muted small mb-0">Identified entries</p>
+      </div>
+    </div>`;
   }
 
   _renderInsightItem(item, index) {
@@ -381,19 +377,16 @@ class ResultsSection {
     return `
     <div class="priority-row">
       <div role="button" class="p-4 d-flex align-items-center cursor-pointer collapsed" 
-           data-bs-toggle="collapse" 
-           data-bs-target="#insight-${index}">
-        
+          data-bs-toggle="collapse" 
+          data-bs-target="#insight-${index}">   
         <div style="width: 120px;" class="d-none d-md-block flex-shrink-0">
           <span class="urgency-tag ${urgencyColor}">${item.urgency.toUpperCase()}</span>
         </div>
-
         <div class="flex-grow-1 px-md-3">
           <span class="fw-600 d-block line-clamp-2">
             ${item.topic}
           </span>
         </div>
-
         <div class="d-flex align-items-center gap-3 ms-auto flex-shrink-0" style="width: 180px;">
           <div class="progress flex-grow-1" style="height: 6px;">
             <div class="progress-bar bg-${impactColor}" 
@@ -402,12 +395,10 @@ class ResultsSection {
           </div>
           <span class="fw-600 small" style="width: 45px;">${item.percentage_estimate}%</span>
         </div>
-
         <div class="ms-3 flex-shrink-0">
           <i class="bi bi-chevron-down chevron-icon opacity-50"></i>
         </div>
       </div>
-
       <div id="insight-${index}" class="collapse" data-bs-parent="#insightAccordion">
         <div class="px-4 pb-4">
           <div class="detail-box p-4 rounded-4 shadow-sm bg-soft-adaptive">

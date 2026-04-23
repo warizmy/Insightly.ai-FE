@@ -15,12 +15,10 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Warna Icon di Upload Zone */
 .icon-drop-zone {
   color: var(--primary-purple); 
 }
 
-/* State pas file di-drag ke atas card */
 .drag-active {
   background-color: rgba(139, 92, 246, 0.05) !important; /* Soft purple hint */
   border-style: solid;
@@ -34,10 +32,9 @@
 }
 
 [data-theme="dark"] .text-primary {
-  color: #60a5fa !important; /* Biru yang lebih terang untuk dark mode */
+  color: #60a5fa !important;
 }
 
-/* Border Adaptif untuk bagian bawah card */
 .border-adaptive {
   border-color: var(--border-color) !important;
 }
@@ -315,26 +312,22 @@ span.label-caps.custom-tooltip {
 
 /* --- RESPONSIVE OPTIMIZATION --- */
 @media (max-width: 768px) {
-  /* 1. Hilangkan header tabel karena makan tempat */
   .priority-header {
     display: none !important;
   }
 
-  /* 2. Ubah padding row agar lebih lega di jempol */
   .priority-row > div[role="button"] {
-    flex-direction: column; /* Tumpuk konten ke bawah */
+    flex-direction: column;
     align-items: flex-start !important;
     padding: 20px !important;
     gap: 12px;
   }
 
-  /* 3. Urgency Tag (Pindah ke baris paling atas) */
   .priority-row .flex-shrink-0:first-child {
-    width: auto !important; /* Hilangkan fixed width 120px */
+    width: auto !important;
     margin-bottom: 4px;
   }
 
-  /* 4. Issue Title (Bikin lebih lebar) */
   .priority-row .flex-grow-1 {
     width: 100%;
     padding: 0 !important;
@@ -343,12 +336,11 @@ span.label-caps.custom-tooltip {
   .priority-row .fw-600 {
     font-size: 15px;
     line-height: 1.5;
-    -webkit-line-clamp: 3; /* Kasih 3 baris di mobile biar jelas */
+    -webkit-line-clamp: 3;
   }
 
-  /* 5. Progress Bar (% of Complaints) */
   .priority-row .ms-auto {
-    width: 100% !important; /* Lebarin full di bawah judul */
+    width: 100% !important;
     margin-left: 0 !important;
     margin-top: 8px;
     padding-top: 12px;
@@ -356,17 +348,15 @@ span.label-caps.custom-tooltip {
   }
 
   .priority-row .progress {
-    height: 8px !important; /* Tebalin dikit biar enak dilihat */
+    height: 8px !important;
   }
 
-  /* 6. Chevron (Pindah posisi ke pojok kanan atas) */
   .priority-row .ms-3.flex-shrink-0 {
     position: absolute;
     top: 20px;
     right: 20px;
   }
 
-  /* 7. Detail Box (Evidence & Action Plan) */
   .detail-box {
     padding: 20px !important;
   }
@@ -376,7 +366,6 @@ span.label-caps.custom-tooltip {
   }
 }
 
-/* Extra Small Screen (HP Kecil) */
 @media (max-width: 480px) {
   .results-section {
     padding-top: 20px !important;
@@ -387,7 +376,7 @@ span.label-caps.custom-tooltip {
   }
 
   .btn-primary.rounded-pill {
-    width: 100%; /* Tombol export jadi full width di HP */
+    width: 100%;
     margin-top: 10px;
   }
 }

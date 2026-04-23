@@ -30,25 +30,21 @@
 
 /* Input Field */
 .sandbox-input {
-  background-color: var(
-    --bg-color
-  ) !important; /* Pake warna background yang lebih gelap dari card */
+  background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
 
-/* Placeholder agar kontras di dark mode */
 .sandbox-input::placeholder {
   color: var(--muted-text);
   opacity: 0.7;
 }
 
-/* Box Hasil (Result) */
 .sandbox-result-box {
   background-color: var(--bg-color) !important;
   border-color: var(--border-color) !important;
 }
 
-/* Card Shadow adjustment untuk Dark Mode */
+/* Card Shadow adjustment for Dark Mode */
 [data-theme="dark"] .sandbox-card {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
@@ -64,7 +60,6 @@
   }
 }
 
-/* Biar tombol analyze dan input sinkron */
 #btn-analyze {
   transition: all 0.3s ease;
 }
@@ -77,7 +72,7 @@
   background-color: #f5f3ff;
 }
 
-/* --- VERTICAL TIMELINE (GUIDE) --- */
+/* --- VERTICAL TIMELINE (GUIDE) SECTION--- */
 .vertical-timeline {
   max-width: 800px;
   margin: 0 auto;
@@ -173,7 +168,6 @@
   box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15) !important;
 }
 
-/* Hover Effect di Dark Mode agar lebih 'glow' */
 [data-theme="dark"] .feature-graphic:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: var(--primary-purple);
@@ -209,17 +203,15 @@ feature-graphic.shadow-indigo:hover {
 }
 
 [data-theme="dark"] .floating-badge.success {
-  background: #059669; /* Emerald yang lebih deep untuk dark mode */
+  background: #059669; /* Dark Emerald */
 }
 
 [data-theme="dark"] .floating-badge.info {
-  background: #0284c7; /* Blue yang lebih deep */
+  background: #0284c7; /* Dark Blue */
 }
 
-/* Pastikan Icon di dalam Graphic tetap kontras */
 [data-theme="dark"] .feature-graphic i {
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.05));
-  /* Memberikan sedikit glow putih di belakang icon agar pop out */
 }
 
 .feature-graphic:hover .floating-badge {
@@ -240,7 +232,7 @@ feature-graphic.shadow-indigo:hover {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  flex-shrink: 0; /* Biar icon gak gepeng pas teks kepanjangan */
+  flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
@@ -250,7 +242,7 @@ feature-graphic.shadow-indigo:hover {
   color: var(--primary-purple);
 }
 [data-theme="dark"] .icon-box-purple {
-  background-color: rgba(139, 92, 246, 0.15); /* Soft purple transparan */
+  background-color: rgba(139, 92, 246, 0.15); /* Soft purple transparent */
   color: #a78bfa;
 }
 
@@ -274,7 +266,7 @@ feature-graphic.shadow-indigo:hover {
   color: #34d399;
 }
 
-/* --- FAQ SECTION STYLING --- */
+/* --- FAQ SECTION --- */
 .faq-item {
   border-color: #f1f5f9 !important;
   transition: all 0.3s ease;
@@ -299,7 +291,7 @@ feature-graphic.shadow-indigo:hover {
   width: 35px;
   height: 35px;
   border-radius: 10px;
-  background-color: #f5f3ff; /* Light mode default */
+  background-color: #f5f3ff; /* Light mode  */
   color: var(--primary-purple);
   display: flex;
   align-items: center;
@@ -307,7 +299,6 @@ feature-graphic.shadow-indigo:hover {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animasi Icon Plus jadi Silang (Rotasi) */
 .faq-header:not(.collapsed) .faq-icon-wrapper {
   background-color: var(--primary-purple);
   color: #fff;
@@ -323,7 +314,7 @@ feature-graphic.shadow-indigo:hover {
 }
 
 [data-theme="dark"] .faq-icon-wrapper {
-  background-color: rgba(139, 92, 246, 0.1); /* Soft purple transparan */
+  background-color: rgba(139, 92, 246, 0.1); /* Soft purple transparent */
   color: #a78bfa;
 }
 
@@ -333,9 +324,8 @@ feature-graphic.shadow-indigo:hover {
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
 
-/* Bikin Teks Pertanyaan Lebih Menonjol di Dark Mode */
 [data-theme="dark"] .faq-header h6 {
-  color: #f1f5f9; /* Putih sedikit abu biar gak terlalu silau */
+  color: #f1f5f9;
 }
 
 /* Custom Collapse Animation */
@@ -349,7 +339,6 @@ feature-graphic.shadow-indigo:hover {
   overflow: hidden;
 }
 
-/* Efek hiasan lingkaran di background banner */
 .cta-banner::before {
   content: "";
   position: absolute;
@@ -371,15 +360,13 @@ feature-graphic.shadow-indigo:hover {
 }
 
 /* --- RESPONSIVE GUIDE & TIMELINE --- */
-
-/* Layar Tablet / iPad (max-width: 992px) */
 @media (max-width: 992px) {
   .vertical-timeline {
-    max-width: 95%; /* Lebih lebar di tablet */
+    max-width: 95%;
   }
 
   .mini-icon {
-    width: 50px; /* Icon digedein */
+    width: 50px;
     height: 50px;
     font-size: 1.4rem;
   }
@@ -389,22 +376,21 @@ feature-graphic.shadow-indigo:hover {
   }
 }
 
-/* Layar HP (max-width: 768px) */
 @media (max-width: 768px) {
   .timeline-item {
-    padding-left: 45px; /* Kurangi spasi kiri biar gak terlalu menjorok */
-    padding-bottom: 70px; /* Kurangi jarak antar step biar gak capek scroll */
+    padding-left: 45px;
+    padding-bottom: 70px;
   }
 
   .timeline-dot {
     width: 35px;
     height: 35px;
     font-size: 16px;
-    left: -2px; /* Geser dikit biar pas di tengah garis */
+    left: -2px;
   }
 
   .timeline-item::before {
-    left: 15px; /* Sesuaikan posisi garis dengan dot baru */
+    left: 15px;
   }
 
   .mini-icon {
@@ -415,12 +401,12 @@ feature-graphic.shadow-indigo:hover {
   }
 
   .timeline-content {
-    padding: 20px; /* Padding dalem box lebih efisien */
+    padding: 20px;
     border-radius: 20px;
   }
 
   .timeline-content h5 {
-    font-size: 1.1rem; /* Judul sedikit lebih kecil biar proporsional */
+    font-size: 1.1rem;
   }
 
   .timeline-content p {
@@ -432,7 +418,6 @@ feature-graphic.shadow-indigo:hover {
   }
 }
 
-/* Layar HP Kecil (max-width: 480px) */
 @media (max-width: 480px) {
   .timeline-item {
     padding-left: 40px;
@@ -449,7 +434,6 @@ feature-graphic.shadow-indigo:hover {
     left: 14px;
   }
 
-  /* Header Step: Icon di atas, Teks di bawah kalau sangat sempit */
   .timeline-content .d-flex {
     flex-direction: column;
     align-items: flex-start !important;

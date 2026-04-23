@@ -21,8 +21,7 @@ class CTASection {
             Get Started<i class="bi bi-arrow-right ms-2"></i>
           </button>
         </div>
-      </div>
-    `;
+      </div>`;
   }
 }
 

@@ -14,7 +14,7 @@ class ThemeManager {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 
-    // Dispatch event biar komponen lain (kayak Chart.js) bisa tau tema berubah
+    // Dispatch event for components/pages that want to react to theme changes
     window.dispatchEvent(
       new CustomEvent('themeChanged', { detail: { theme } }),
     );

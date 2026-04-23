@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-
 class Popup {
   constructor() {
     if (!document.getElementById('global-popup')) {

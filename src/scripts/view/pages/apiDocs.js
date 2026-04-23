@@ -99,7 +99,6 @@ class APIDocs {
   }
 
   _initializeEvent() {
-    // Logic untuk menghighlight menu sidebar pas di scroll
     const navLinks = this._container.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
       let current = '';
