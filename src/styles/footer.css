@@ -1,3 +1,23 @@
-.footer-container div p {
-  font-size: 14px;
+.footer-container {
+  background-color: var(--bg-color); 
+  border-top: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.footer-container p {
+  font-size: 13px;
+  color: var(--muted-text) !important;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Dark Mode Adjustment */
+[data-theme="dark"] .footer-container {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.analyze-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
