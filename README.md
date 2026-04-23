@@ -62,3 +62,11 @@ The API reference is available at `/apidocs` within the application. Key endpoin
 ## Deployment
 
 This project is configured for deployment on Netlify. Ensure the `dist` file is present in the publish directory.
+
+## Future Improvements
+
+- Migration to React or Next.js
+- User authentication and profile management
+- Backend-based history persistence
+- Image storage using cloud services
+- Multi-language support
