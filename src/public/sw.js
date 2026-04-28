@@ -1,4 +1,4 @@
-const CACHE_NAME = 'indofood-ai-v1';
+const CACHE_NAME = 'insightly-ai-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -37,7 +37,7 @@ self.addEventListener('fetch', (event) => {
     caches.match(req).then((cached) => {
       if (cached) return cached;
 
-      return fetch(req).then((res) => caches.open('indoffod-v1').then((cache) => {
+      return fetch(req).then((res) => caches.open('insightly-v1').then((cache) => {
         cache.put(req, res.clone());
         return res;
       }));
