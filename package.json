@@ -1,7 +1,7 @@
 {
-  "name": "website-indo-food-classification",
+  "name": "website-insightly.ai",
   "version": "1.0.0",
-  "description": "A website for Indo Food Classification",
+  "description": "A website for sentiment analysis and insights using AI.",
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
